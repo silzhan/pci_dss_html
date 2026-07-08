@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="460" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">研发与测试 · 安全门禁</text>
+  <line x1="330" y1="56" x2="570" y2="56" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Pipeline flow -->
+  <rect x="30" y="80" width="840" height="200" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="55" y="108" font-size="16" font-weight="700" fill="#1e293b">安全开发生命周期</text>
+
+  <!-- Stage 1: Code -->
+  <rect x="50" y="130" width="140" height="65" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="120" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">💻 编码</text>
+  <text x="120" y="175" text-anchor="middle" font-size="10" fill="#1e40af">密钥不进 Git</text>
+  <text x="120" y="190" text-anchor="middle" font-size="10" fill="#1e40af">Secrets Manager</text>
+
+  <text x="200" y="168" font-size="18" fill="#94a3b8">→</text>
+
+  <!-- Stage 2: SAST -->
+  <rect x="215" y="130" width="120" height="65" rx="10" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="275" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#7c3aed">🔍 SAST</text>
+  <text x="275" y="175" text-anchor="middle" font-size="10" fill="#6d28d9">静态代码扫描</text>
+  <text x="275" y="190" text-anchor="middle" font-size="10" fill="#6d28d9">+ SCA 依赖检查</text>
+
+  <text x="345" y="168" font-size="18" fill="#94a3b8">→</text>
+
+  <!-- Stage 3: Build -->
+  <rect x="360" y="130" width="120" height="65" rx="10" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+  <text x="420" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#d97706">🔨 构建</text>
+  <text x="420" y="175" text-anchor="middle" font-size="10" fill="#92400e">变更控制流程</text>
+  <text x="420" y="190" text-anchor="middle" font-size="10" fill="#92400e">CDE 影响须审批</text>
+
+  <text x="490" y="168" font-size="18" fill="#94a3b8">→</text>
+
+  <!-- Stage 4: DAST -->
+  <rect x="505" y="130" width="120" height="65" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="565" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#dc2626">🎯 DAST</text>
+  <text x="565" y="175" text-anchor="middle" font-size="10" fill="#b91c1c">动态安全测试</text>
+  <text x="565" y="190" text-anchor="middle" font-size="10" fill="#b91c1c">ASV 扫描</text>
+
+  <text x="635" y="168" font-size="18" fill="#94a3b8">→</text>
+
+  <!-- Stage 5: Deploy -->
+  <rect x="650" y="130" width="120" height="65" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="710" y="155" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">🚀 部署</text>
+  <text x="710" y="175" text-anchor="middle" font-size="10" fill="#047857">渗透测试</text>
+  <text x="710" y="190" text-anchor="middle" font-size="10" fill="#047857">完整性检测</text>
+
+  <!-- Env isolation -->
+  <rect x="790" y="130" width="70" height="130" rx="10" fill="#1e293b"/>
+  <text x="825" y="165" text-anchor="middle" font-size="11" font-weight="600" fill="white">三环境</text>
+  <text x="825" y="185" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">隔离</text>
+  <text x="825" y="205" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Dev</text>
+  <text x="825" y="220" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Staging</text>
+  <text x="825" y="235" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Prod</text>
+
+  <!-- Red lines -->
+  <rect x="30" y="305" width="840" height="140" rx="14" fill="white" stroke="#fecaca" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="305" width="840" height="38" rx="14" fill="#ef4444"/>
+  <rect x="30" y="330" width="840" height="13" fill="#ef4444"/>
+  <text x="450" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="white">🚫 红线 · 重大不符合风险</text>
+
+  <rect x="50" y="358" width="380" height="72" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="240" y="382" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">🔴 测试环境用真实卡号</text>
+  <text x="240" y="402" text-anchor="middle" font-size="12" fill="#b91c1c">原则上禁止，需按 CDE 纳管</text>
+  <text x="240" y="420" text-anchor="middle" font-size="11" fill="#64748b">→ 用 PSP 测试卡或脱敏仿真数据</text>
+
+  <rect x="470" y="358" width="380" height="72" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="660" y="382" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">🔴 密钥进 Git 仓库</text>
+  <text x="660" y="402" text-anchor="middle" font-size="12" fill="#b91c1c">进了就泄露，必须立即轮换</text>
+  <text x="660" y="420" text-anchor="middle" font-size="11" fill="#64748b">→ Secrets Manager，git-secrets 预提交钩子</text>
+</svg>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCI DSS 培训配图预览</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI','Microsoft YaHei',sans-serif; background: #0f172a; color: #e2e8f0; }
+    .header { text-align: center; padding: 40px 20px 20px; }
+    .header h1 { font-size: 32px; color: #f8fafc; margin-bottom: 8px; }
+    .header p { color: #94a3b8; font-size: 16px; }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    .slide { margin-bottom: 48px; }
+    .slide-label { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .slide-num { background: #1a73e8; color: white; font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+    .slide-title { font-size: 18px; font-weight: 600; color: #f1f5f9; }
+    .slide-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .slide-card img, .slide-card object { width: 100%; display: block; }
+    .slide-note { background: #1e293b; border-left: 4px solid #3b82f6; padding: 12px 16px; margin-top: 8px; border-radius: 0 8px 8px 0; font-size: 13px; color: #94a3b8; }
+    .module-divider { text-align: center; padding: 20px 0; color: #475569; font-size: 14px; font-weight: 600; letter-spacing: 2px; }
+    .module-divider::before, .module-divider::after { content: '— '; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>PCI DSS 培训 · 逐页配图</h1>
+    <p>共 14 张 SVG 图表 · 900×400~500px · 可直接嵌入 PPT</p>
+  </div>
+
+  <div class="container">
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">01</span>
+        <span class="slide-title">目录 · 四大模块</span>
+      </div>
+      <div class="slide-card"><img src="slide-01-overview.svg" alt="四大模块概览"/></div>
+      <div class="slide-note">开场总览：四个模块的逻辑链 — 要求→设计→落地→证明</div>
+    </div>
+
+    <div class="module-divider">模块一：合规判断</div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">02</span>
+        <span class="slide-title">定位与边界</span>
+      </div>
+      <div class="slide-card"><img src="slide-02-boundary.svg" alt="PCI DSS 定位与边界"/></div>
+      <div class="slide-note">左：PCI DSS 是什么 · 右：常见误解 ❌</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">03</span>
+        <span class="slide-title">认证等级与验证方式</span>
+      </div>
+      <div class="slide-card"><img src="slide-03-levels.svg" alt="认证等级与SAQ"/></div>
+      <div class="slide-note">Merchant/SP 等级 + SAQ 类型决策（由接入方式决定）</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">04</span>
+        <span class="slide-title">PCI Scope · 范围边界</span>
+      </div>
+      <div class="slide-card"><img src="slide-04-scope.svg" alt="PCI Scope 同心圆"/></div>
+      <div class="slide-note">同心圆：CDE 核心 → Scope 边界 → 盲区 + 降 Scope 七件套</div>
+    </div>
+
+    <div class="module-divider">模块二：产品落地</div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">05</span>
+        <span class="slide-title">支付产品形态与 PCI 影响</span>
+      </div>
+      <div class="slide-card"><img src="slide-05-product-forms.svg" alt="产品形态对比"/></div>
+      <div class="slide-note">五种形态：Hosted → Elements → Direct API → PayFac → Click to Pay</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">06</span>
+        <span class="slide-title">CIT / MIT 与业务场景</span>
+      </div>
+      <div class="slide-card"><img src="slide-06-cit-mit.svg" alt="CIT MIT 流程"/></div>
+      <div class="slide-note">CIT vs MIT 对比 + 订阅生命周期时间线</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">07</span>
+        <span class="slide-title">Tokenization · 四种 Token 对比</span>
+      </div>
+      <div class="slide-card"><img src="slide-07-token.svg" alt="Token 对比表"/></div>
+      <div class="slide-note">PSP / Merchant / Network / Payment Method ID 四维对比</div>
+    </div>
+
+    <div class="module-divider">模块三：技术架构</div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">08</span>
+        <span class="slide-title">Card Vault 选型</span>
+      </div>
+      <div class="slide-card"><img src="slide-08-vault.svg" alt="Vault 选型"/></div>
+      <div class="slide-note">三种方案对比 + 多 PSP 编排价值</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">09</span>
+        <span class="slide-title">密钥管理 · 分层加密模型</span>
+      </div>
+      <div class="slide-card"><img src="slide-09-keymgmt.svg" alt="密钥管理"/></div>
+      <div class="slide-note">信封加密分层图 + 生命周期 + 常见翻车 ❌</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">10</span>
+        <span class="slide-title">前端支付页安全 · Magecart</span>
+      </div>
+      <div class="slide-card"><img src="slide-10-frontend.svg" alt="前端安全"/></div>
+      <div class="slide-note">Magecart 攻击链 + 英航案例 + 防御控制措施</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">11</span>
+        <span class="slide-title">数据治理 · 卡数据副本追踪</span>
+      </div>
+      <div class="slide-card"><img src="slide-11-data-gov.svg" alt="数据治理"/></div>
+      <div class="slide-note">卡数据副本辐射图：日志/APM/客服/BI/测试环境</div>
+    </div>
+
+    <div class="module-divider">模块四：运营审计</div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">12</span>
+        <span class="slide-title">研发与测试 · 安全门禁</span>
+      </div>
+      <div class="slide-card"><img src="slide-12-dev-test.svg" alt="研发测试"/></div>
+      <div class="slide-note">安全开发生命周期流水线 + 两条红线</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">13</span>
+        <span class="slide-title">事件响应 · 关键动作</span>
+      </div>
+      <div class="slide-card"><img src="slide-13-incident.svg" alt="事件响应"/></div>
+      <div class="slide-note">四级事件严重等级 + v4.0 要求 + 响应时间线</div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-label">
+        <span class="slide-num">14</span>
+        <span class="slide-title">培训主线 · 收尾</span>
+      </div>
+      <div class="slide-card"><img src="slide-14-summary.svg" alt="总结"/></div>
+      <div class="slide-note">从合规负担到业务收益 + 四模块逻辑链</div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; padding:40px 20px; color:#475569; font-size:13px;">
+    PCI DSS 培训配图 · 14 张 SVG · 可直接嵌入 PPT 或导出为 PNG
+  </div>
+</body>
+</html>

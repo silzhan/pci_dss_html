@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="500" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">密钥管理 · 分层加密模型</text>
+  <line x1="320" y1="56" x2="580" y2="56" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Layered encryption diagram -->
+  <rect x="30" y="80" width="520" height="350" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="290" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">信封加密 (Envelope Encryption)</text>
+
+  <!-- Layer 1: PAN data -->
+  <rect x="60" y="130" width="460" height="65" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="290" y="155" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">💳 PAN 明文数据</text>
+  <text x="290" y="175" text-anchor="middle" font-size="12" fill="#b91c1c">4111 1111 1111 1111</text>
+  <text x="480" y="155" text-anchor="end" font-size="11" fill="#ef4444">← 用 DEK 加密</text>
+
+  <!-- Arrow down -->
+  <path d="M290,195 L290,215" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrD)"/>
+  <defs><marker id="arrD" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,6" fill="#94a3b8"/></marker></defs>
+
+  <!-- Layer 2: DEK -->
+  <rect x="60" y="220" width="460" height="65" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="290" y="245" text-anchor="middle" font-size="14" font-weight="700" fill="#f59e0b">🔑 DEK (Data Encryption Key)</text>
+  <text x="290" y="265" text-anchor="middle" font-size="12" fill="#92400e">加密 PAN 的密钥，存在 DB（被 KEK 包过）</text>
+  <text x="480" y="245" text-anchor="end" font-size="11" fill="#f59e0b">← 用 KEK 加密</text>
+
+  <!-- Arrow down -->
+  <path d="M290,285 L290,305" stroke="#94a3b8" stroke-width="2" fill="none"/>
+
+  <!-- Layer 3: KEK -->
+  <rect x="60" y="310" width="460" height="65" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="290" y="335" text-anchor="middle" font-size="14" font-weight="700" fill="#2563eb">🔐 KEK (Key Encryption Key)</text>
+  <text x="290" y="355" text-anchor="middle" font-size="12" fill="#1e40af">在 KMS/HSM 中，密钥与密文分离</text>
+
+  <!-- Arrow down -->
+  <path d="M290,375 L290,395" stroke="#94a3b8" stroke-width="2" fill="none"/>
+
+  <!-- Layer 4: Master Key -->
+  <rect x="60" y="400" width="460" height="25" rx="6" fill="#1e293b"/>
+  <text x="290" y="418" text-anchor="middle" font-size="12" font-weight="700" fill="white">🏛️ Master Key · HSM 硬件保护 · 永不出设备</text>
+
+  <!-- Right side: Lifecycle + Pitfalls -->
+  <rect x="570" y="80" width="300" height="200" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="570" y="80" width="300" height="38" rx="14" fill="#7c3aed"/>
+  <rect x="570" y="105" width="300" height="13" fill="#7c3aed"/>
+  <text x="720" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="white">密钥生命周期</text>
+
+  <text x="590" y="140" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">1.</tspan> 生成 → 2. 分发 → 3. 使用
+  </text>
+  <text x="590" y="165" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">4.</tspan> 存储 → 5. 轮换 → 6. 吊销
+  </text>
+  <text x="590" y="190" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">7.</tspan> 销毁
+  </text>
+
+  <rect x="585" y="210" width="270" height="55" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="720" y="232" text-anchor="middle" font-size="12" font-weight="600" fill="#dc2626">v4.0 要求</text>
+  <text x="720" y="252" text-anchor="middle" font-size="11" fill="#b91c1c">定期轮换 · 淘汰弱算法/早期 TLS</text>
+
+  <!-- Common pitfalls -->
+  <rect x="570" y="300" width="300" height="170" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="570" y="300" width="300" height="38" rx="14" fill="#ef4444"/>
+  <rect x="570" y="325" width="300" height="13" fill="#ef4444"/>
+  <text x="720" y="325" text-anchor="middle" font-size="14" font-weight="700" fill="white">常见翻车 ❌</text>
+
+  <text x="590" y="360" font-size="12" fill="#334155">
+    <tspan fill="#ef4444">✗</tspan> 密钥硬编码进代码
+  </text>
+  <text x="590" y="385" font-size="12" fill="#334155">
+    <tspan fill="#ef4444">✗</tspan> 密钥和密文同库存储
+  </text>
+  <text x="590" y="410" font-size="12" fill="#334155">
+    <tspan fill="#ef4444">✗</tspan> 生产密钥拷到测试环境
+  </text>
+  <text x="590" y="435" font-size="12" fill="#334155">
+    <tspan fill="#ef4444">✗</tspan> 邮件/IM 发送密钥
+  </text>
+  <text x="590" y="455" font-size="11" fill="#64748b">任一条被 QSA 看到 → 重大不符合风险</text>
+</svg>

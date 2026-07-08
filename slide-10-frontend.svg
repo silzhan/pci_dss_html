@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="480" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">前端支付页安全 · Magecart 威胁</text>
+  <line x1="280" y1="56" x2="620" y2="56" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Attack flow -->
+  <rect x="30" y="80" width="530" height="200" rx="14" fill="white" stroke="#fecaca" stroke-width="2" filter="url(#shadow)"/>
+  <text x="55" y="108" font-size="16" font-weight="700" fill="#dc2626">⚠ Magecart 攻击链</text>
+
+  <!-- Attack steps -->
+  <rect x="50" y="125" width="90" height="55" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="95" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">CDN 被篡改</text>
+  <text x="95" y="165" text-anchor="middle" font-size="10" fill="#b91c1c">或广告/埋点 SDK</text>
+
+  <text x="155" y="158" font-size="18" fill="#94a3b8">→</text>
+
+  <rect x="170" y="125" width="90" height="55" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="215" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">注入恶意 JS</text>
+  <text x="215" y="165" text-anchor="middle" font-size="10" fill="#b91c1c">22 行代码</text>
+
+  <text x="275" y="158" font-size="18" fill="#94a3b8">→</text>
+
+  <rect x="290" y="125" width="100" height="55" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="340" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">窃取表单数据</text>
+  <text x="340" y="165" text-anchor="middle" font-size="10" fill="#b91c1c">PAN + CVV + 姓名</text>
+
+  <text x="405" y="158" font-size="18" fill="#94a3b8">→</text>
+
+  <rect x="420" y="125" width="120" height="55" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="480" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">外传到攻击者服务器</text>
+  <text x="480" y="165" text-anchor="middle" font-size="10" fill="#b91c1c">22 天未发现</text>
+
+  <!-- BA case study -->
+  <rect x="50" y="195" width="490" height="88" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+  <text x="70" y="218" font-size="13" font-weight="700" fill="#92400e">🇬🇧 英航案例 (2018)</text>
+  <text x="70" y="240" font-size="12" fill="#78350f">22 行恶意代码 → CDN 篡改 → 22 天 → 约 38 万交易受影响</text>
+  <text x="70" y="256" font-size="11" fill="#a16207">ICO 拟罚 1.83 亿英镑，最终罚款 2000 万英镑</text>
+  <text x="70" y="272" font-size="11" fill="#a16207">Magecart 不管你服务器安不安全，它直接在浏览器里偷</text>
+
+  <!-- Risk sources -->
+  <rect x="580" y="80" width="290" height="200" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="580" y="80" width="290" height="38" rx="14" fill="#f59e0b"/>
+  <rect x="580" y="105" width="290" height="13" fill="#f59e0b"/>
+  <text x="725" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="white">风险来源</text>
+
+  <text x="600" y="140" font-size="12" fill="#334155">
+    <tspan fill="#f59e0b" font-weight="700">•</tspan> 广告脚本 (Ad Tech)
+  </text>
+  <text x="600" y="165" font-size="12" fill="#334155">
+    <tspan fill="#f59e0b" font-weight="700">•</tspan> 埋点 / 分析 SDK
+  </text>
+  <text x="600" y="190" font-size="12" fill="#334155">
+    <tspan fill="#f59e0b" font-weight="700">•</tspan> 客服浮窗 (Chat Widget)
+  </text>
+  <text x="600" y="215" font-size="12" fill="#334155">
+    <tspan fill="#f59e0b" font-weight="700">•</tspan> A/B 测试工具
+  </text>
+  <text x="600" y="240" font-size="12" fill="#334155">
+    <tspan fill="#f59e0b" font-weight="700">•</tspan> CDN 篡改
+  </text>
+  <text x="600" y="265" font-size="12" fill="#334155">
+    <tspan fill="#f59e0b" font-weight="700">•</tspan> 第三方 npm 包
+  </text>
+
+  <!-- Controls -->
+  <rect x="30" y="305" width="840" height="155" rx="14" fill="white" stroke="#d1fae5" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="305" width="840" height="40" rx="14" fill="#059669"/>
+  <rect x="30" y="330" width="840" height="15" fill="#059669"/>
+  <text x="450" y="331" text-anchor="middle" font-size="15" font-weight="700" fill="white">防御控制措施 · v4.0 要求 6.4.3 / 11.6.1</text>
+
+  <rect x="50" y="360" width="180" height="80" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="140" y="385" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">🛡️ CSP</text>
+  <text x="140" y="405" text-anchor="middle" font-size="11" fill="#047857">Content-Security-Policy</text>
+  <text x="140" y="425" text-anchor="middle" font-size="11" fill="#047857">限制脚本来源</text>
+
+  <rect x="250" y="360" width="180" height="80" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="340" y="385" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">🔒 SRI</text>
+  <text x="340" y="405" text-anchor="middle" font-size="11" fill="#047857">Subresource Integrity</text>
+  <text x="340" y="425" text-anchor="middle" font-size="11" fill="#047857">脚本完整性校验</text>
+
+  <rect x="450" y="360" width="200" height="80" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="550" y="385" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">📋 脚本白名单</text>
+  <text x="550" y="405" text-anchor="middle" font-size="11" fill="#047857">Inventory + Authorization</text>
+  <text x="550" y="425" text-anchor="middle" font-size="11" fill="#047857">每个脚本有清单、有授权</text>
+
+  <rect x="670" y="360" width="180" height="80" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="760" y="385" text-anchor="middle" font-size="13" font-weight="600" fill="#059669">📊 篡改检测</text>
+  <text x="760" y="405" text-anchor="middle" font-size="11" fill="#047857">完整性监控 + 告警</text>
+  <text x="760" y="425" text-anchor="middle" font-size="11" fill="#047857">脚本/页面变更通知</text>
+</svg>

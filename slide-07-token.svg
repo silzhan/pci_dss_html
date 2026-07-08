@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="500" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">Tokenization · 四种 Token 对比</text>
+  <line x1="300" y1="56" x2="600" y2="56" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Table header -->
+  <rect x="30" y="80" width="840" height="40" rx="8" fill="#1e293b"/>
+  <text x="130" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="white">Token 类型</text>
+  <text x="310" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="white">跨 PSP</text>
+  <text x="440" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="white">可逆</text>
+  <text x="630" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="white">关键特性</text>
+  <text x="800" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="white">适用</text>
+
+  <!-- Row 1: PSP Token -->
+  <rect x="30" y="125" width="840" height="75" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="30" y="125" width="6" height="75" rx="3" fill="#ef4444"/>
+  <text x="130" y="155" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">PSP Token</text>
+  <text x="130" y="175" text-anchor="middle" font-size="11" fill="#64748b">PSP 发的 token</text>
+  <text x="310" y="160" text-anchor="middle" font-size="20">❌</text>
+  <text x="440" y="160" text-anchor="middle" font-size="12" fill="#334155">PSP 可逆</text>
+  <text x="630" y="155" text-anchor="middle" font-size="12" fill="#334155">换 PSP 即失效</text>
+  <text x="630" y="175" text-anchor="middle" font-size="11" fill="#64748b">锁定单 PSP</text>
+  <text x="800" y="160" text-anchor="middle" font-size="12" fill="#334155">单 PSP 场景</text>
+
+  <!-- Row 2: Merchant Token -->
+  <rect x="30" y="205" width="840" height="75" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="30" y="205" width="6" height="75" rx="3" fill="#f59e0b"/>
+  <text x="130" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">Merchant Token</text>
+  <text x="130" y="255" text-anchor="middle" font-size="11" fill="#64748b">自建 Vault 发</text>
+  <text x="310" y="240" text-anchor="middle" font-size="20">✅</text>
+  <text x="440" y="240" text-anchor="middle" font-size="12" fill="#334155">经 Vault 可逆</text>
+  <text x="630" y="235" text-anchor="middle" font-size="12" fill="#334155">跨 PSP 路由</text>
+  <text x="630" y="255" text-anchor="middle" font-size="11" fill="#64748b">自建合规成本高</text>
+  <text x="800" y="240" text-anchor="middle" font-size="12" fill="#334155">多 PSP 编排</text>
+
+  <!-- Row 3: Network Token -->
+  <rect x="30" y="285" width="840" height="85" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+  <rect x="30" y="285" width="6" height="85" rx="3" fill="#059669"/>
+  <text x="130" y="315" text-anchor="middle" font-size="14" font-weight="700" fill="#059669">Network Token</text>
+  <text x="130" y="335" text-anchor="middle" font-size="11" fill="#047857">卡组织发 ⭐</text>
+  <text x="310" y="325" text-anchor="middle" font-size="20">✅✅</text>
+  <text x="440" y="325" text-anchor="middle" font-size="12" fill="#334155">不可逆</text>
+  <text x="630" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">授权率 +2~5%</text>
+  <text x="630" y="335" text-anchor="middle" font-size="11" fill="#047857">卡过期自动更新</text>
+  <text x="630" y="355" text-anchor="middle" font-size="11" fill="#047857">泄露可用性降低</text>
+  <text x="800" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">订阅/复购</text>
+  <text x="800" y="335" text-anchor="middle" font-size="11" fill="#047857">Click to Pay 基础</text>
+
+  <!-- Row 4: Payment Method ID -->
+  <rect x="30" y="375" width="840" height="65" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="30" y="375" width="6" height="65" rx="3" fill="#6366f1"/>
+  <text x="130" y="405" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">Payment Method ID</text>
+  <text x="130" y="425" text-anchor="middle" font-size="11" fill="#64748b">用户级绑定</text>
+  <text x="310" y="410" text-anchor="middle" font-size="20">❌</text>
+  <text x="440" y="410" text-anchor="middle" font-size="12" fill="#334155">不可逆</text>
+  <text x="630" y="410" text-anchor="middle" font-size="12" fill="#334155">绑定用户级</text>
+  <text x="800" y="410" text-anchor="middle" font-size="12" fill="#334155">用户钱包</text>
+
+  <!-- Key insight callout -->
+  <rect x="30" y="460" width="840" height="30" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="450" y="480" text-anchor="middle" font-size="13" fill="#1e40af">
+    <tspan font-weight="700">💡 核心洞察：</tspan>Network Token 不只是安全工具，是业务增长引擎 — 授权率↑、churn↓、生命周期管理
+  </text>
+</svg>

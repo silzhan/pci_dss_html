@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="440" rx="12" fill="url(#bg)"/>
+  <text x="450" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="white">培训主线 · 从合规负担到业务收益</text>
+  <line x1="280" y1="62" x2="620" y2="62" stroke="#1a73e8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Core message -->
+  <rect x="50" y="85" width="800" height="50" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="450" y="117" text-anchor="middle" font-size="15" fill="rgba(255,255,255,0.95)">
+    PCI DSS 不只是把卡数据暴露面降到最小，更是把合规成本
+    <tspan font-weight="700" fill="#60a5fa">转化</tspan>
+    为业务收益
+  </text>
+
+  <!-- Business benefits -->
+  <rect x="50" y="155" width="180" height="100" rx="12" fill="rgba(37,99,235,0.2)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="140" y="185" text-anchor="middle" font-size="28">📈</text>
+  <text x="140" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">授权率提升</text>
+  <text x="140" y="230" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">Network Token +2~5%</text>
+
+  <rect x="250" y="155" width="180" height="100" rx="12" fill="rgba(5,150,105,0.2)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="340" y="185" text-anchor="middle" font-size="28">🔄</text>
+  <text x="340" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">Churn 降低</text>
+  <text x="340" y="230" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">卡过期自动更新</text>
+
+  <rect x="450" y="155" width="180" height="100" rx="12" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="540" y="185" text-anchor="middle" font-size="28">🛡️</text>
+  <text x="540" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#fbbf24">多 PSP 容灾</text>
+  <text x="540" y="230" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">Token 编排 + 路由</text>
+
+  <rect x="650" y="155" width="200" height="100" rx="12" fill="rgba(124,58,237,0.2)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="750" y="185" text-anchor="middle" font-size="28">🏢</text>
+  <text x="750" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#a78bfa">商户规模化</text>
+  <text x="750" y="230" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">PayFac + Click to Pay</text>
+
+  <!-- Four module logic chain -->
+  <rect x="50" y="280" width="800" height="140" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="450" y="308" text-anchor="middle" font-size="15" font-weight="600" fill="rgba(255,255,255,0.9)">四个模块逻辑链</text>
+
+  <!-- Module flow -->
+  <rect x="70" y="325" width="160" height="75" rx="10" fill="rgba(26,115,232,0.3)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="150" y="350" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">合规判断</text>
+  <text x="150" y="370" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">要求是什么</text>
+  <text x="150" y="388" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">等级 · SAQ · Scope</text>
+
+  <text x="245" y="368" font-size="22" fill="rgba(255,255,255,0.4)">→</text>
+
+  <rect x="270" y="325" width="160" height="75" rx="10" fill="rgba(5,150,105,0.3)" stroke="#10b981" stroke-width="1"/>
+  <text x="350" y="350" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">产品落地</text>
+  <text x="350" y="370" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">怎么设计降成本</text>
+  <text x="350" y="388" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">接入 · Token · CIT/MIT</text>
+
+  <text x="445" y="368" font-size="22" fill="rgba(255,255,255,0.4)">→</text>
+
+  <rect x="470" y="325" width="160" height="75" rx="10" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+  <text x="550" y="350" text-anchor="middle" font-size="13" font-weight="700" fill="#fbbf24">技术架构</text>
+  <text x="550" y="370" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">怎么落地</text>
+  <text x="550" y="388" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">Vault · 密钥 · 前端</text>
+
+  <text x="645" y="368" font-size="22" fill="rgba(255,255,255,0.4)">→</text>
+
+  <rect x="670" y="325" width="160" height="75" rx="10" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="1"/>
+  <text x="750" y="350" text-anchor="middle" font-size="13" font-weight="700" fill="#f87171">运营审计</text>
+  <text x="750" y="370" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">怎么证明做到了</text>
+  <text x="750" y="388" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">测试 · 权限 · 响应</text>
+</svg>

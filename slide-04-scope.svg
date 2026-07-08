@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="500" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">PCI Scope · 范围边界</text>
+  <line x1="330" y1="56" x2="570" y2="56" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Concentric scope diagram -->
+  <ellipse cx="350" cy="280" rx="300" ry="190" fill="#fef2f2" stroke="#fca5a5" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="80" y="115" font-size="13" font-weight="600" fill="#ef4444">周边系统（风险盲区）</text>
+
+  <ellipse cx="350" cy="270" rx="210" ry="140" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+  <text x="170" y="160" font-size="13" font-weight="600" fill="#f59e0b">Scope 边界</text>
+
+  <ellipse cx="350" cy="260" rx="120" ry="90" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="260" y="195" font-size="12" font-weight="600" fill="#2563eb">CDE 核心</text>
+
+  <rect x="295" y="230" width="110" height="60" rx="8" fill="#1a73e8" opacity="0.9"/>
+  <text x="350" y="255" text-anchor="middle" font-size="13" font-weight="700" fill="white">💳 卡数据</text>
+  <text x="350" y="275" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">CHD/PAN · SAD 授权中</text>
+
+  <!-- CDE items -->
+  <text x="260" y="230" font-size="11" fill="#1e40af">支付 API</text>
+  <text x="410" y="230" font-size="11" fill="#1e40af">Vault</text>
+  <text x="260" y="310" font-size="11" fill="#1e40af">数据库</text>
+  <text x="410" y="310" font-size="11" fill="#1e40af">HSM/KMS</text>
+
+  <!-- Scope items -->
+  <text x="165" y="220" font-size="11" fill="#9a3412">日志系统</text>
+  <text x="165" y="340" font-size="11" fill="#9a3412">跳板机</text>
+  <text x="490" y="220" font-size="11" fill="#9a3412">缓存/MQ</text>
+  <text x="490" y="340" font-size="11" fill="#9a3412">CI/CD</text>
+
+  <!-- Blind spot items -->
+  <text x="70" y="260" font-size="11" fill="#991b1b">APM 采了请求体</text>
+  <text x="70" y="300" font-size="11" fill="#991b1b">客服截图含卡号</text>
+  <text x="580" y="200" font-size="11" fill="#991b1b">错误日志打 PAN</text>
+  <text x="580" y="360" font-size="11" fill="#991b1b">测试环境真实卡</text>
+  <text x="580" y="260" font-size="11" fill="#991b1b">BI 同步未脱敏</text>
+
+  <!-- Right side: 降 Scope 七件套 -->
+  <rect x="620" y="80" width="260" height="400" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="620" y="80" width="260" height="40" rx="14" fill="#059669"/>
+  <rect x="620" y="105" width="260" height="15" fill="#059669"/>
+  <text x="750" y="106" text-anchor="middle" font-size="14" font-weight="700" fill="white">降 Scope 七件套</text>
+
+  <text x="640" y="145" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#059669">1.</tspan> Hosted Page — 能不碰就不碰
+  </text>
+  <text x="640" y="175" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#059669">2.</tspan> iframe / Elements
+  </text>
+  <text x="640" y="205" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#059669">3.</tspan> PSP Token 替代 PAN
+  </text>
+  <text x="640" y="235" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#059669">4.</tspan> CDE 网段隔离
+  </text>
+  <text x="640" y="265" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#059669">5.</tspan> 日志脱敏
+  </text>
+  <text x="640" y="295" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#059669">6.</tspan> 最小权限
+  </text>
+  <text x="640" y="325" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">7.</tspan> 授权后不存 CVV
+  </text>
+
+  <rect x="635" y="350" width="230" height="55" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="750" y="372" text-anchor="middle" font-size="12" font-weight="600" fill="#dc2626">⚠ 授权后存 CVV = 重大不符合</text>
+  <text x="750" y="392" text-anchor="middle" font-size="11" fill="#b91c1c">必须立即整改</text>
+
+  <rect x="635" y="415" width="230" height="55" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="750" y="437" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">原则：能不碰就不碰</text>
+  <text x="750" y="457" text-anchor="middle" font-size="11" fill="#1e40af">碰了就脱敏 → 隔离 → 加密</text>
+</svg>

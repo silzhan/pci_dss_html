@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="440" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">CIT / MIT 与业务场景</text>
+  <line x1="330" y1="56" x2="570" y2="56" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- CIT Section -->
+  <rect x="30" y="80" width="410" height="180" rx="14" fill="white" stroke="#c4b5fd" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="80" width="410" height="44" rx="14" fill="#7c3aed"/>
+  <rect x="30" y="110" width="410" height="14" fill="#7c3aed"/>
+  <text x="235" y="108" text-anchor="middle" font-size="17" font-weight="700" fill="white">CIT · 买家在场</text>
+  <text x="235" y="138" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)">Customer Initiated Transaction</text>
+
+  <text x="55" y="170" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#7c3aed">•</tspan> 首笔支付、注册绑卡
+  </text>
+  <text x="55" y="195" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#7c3aed">•</tspan> 通常需 3DS/SCA 或豁免
+  </text>
+  <text x="55" y="220" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#7c3aed">•</tspan> 建立后续 MIT 的授权凭证
+  </text>
+  <text x="55" y="245" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#7c3aed">•</tspan> 买家主动确认交易金额/频率
+  </text>
+
+  <!-- MIT Section -->
+  <rect x="460" y="80" width="410" height="180" rx="14" fill="white" stroke="#fdba74" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="460" y="80" width="410" height="44" rx="14" fill="#f59e0b"/>
+  <rect x="460" y="110" width="410" height="14" fill="#f59e0b"/>
+  <text x="665" y="108" text-anchor="middle" font-size="17" font-weight="700" fill="white">MIT · 商户发起</text>
+  <text x="665" y="138" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)">Merchant Initiated Transaction</text>
+
+  <text x="485" y="170" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#f59e0b">•</tspan> 订阅续费、分期扣款
+  </text>
+  <text x="485" y="195" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#f59e0b">•</tspan> 必须带首次 CIT 的凭证
+  </text>
+  <text x="485" y="220" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#f59e0b">•</tspan> 金额/频率不能超授权范围
+  </text>
+  <text x="485" y="245" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#f59e0b">•</tspan> 免密扣款、自动续费
+  </text>
+
+  <!-- Flow: Subscription lifecycle -->
+  <rect x="30" y="290" width="840" height="130" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="60" y="318" font-size="15" font-weight="700" fill="#1e293b">订阅生命周期</text>
+
+  <!-- Timeline -->
+  <line x1="80" y1="350" x2="820" y2="350" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Step 1 -->
+  <circle cx="130" cy="350" r="20" fill="#7c3aed"/>
+  <text x="130" y="355" text-anchor="middle" font-size="12" font-weight="700" fill="white">1</text>
+  <text x="130" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">首笔 CIT</text>
+  <text x="130" y="400" text-anchor="middle" font-size="10" fill="#64748b">认证/豁免</text>
+
+  <!-- Step 2 -->
+  <circle cx="280" cy="350" r="20" fill="#7c3aed"/>
+  <text x="280" y="355" text-anchor="middle" font-size="12" font-weight="700" fill="white">2</text>
+  <text x="280" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">存 Token</text>
+  <text x="280" y="400" text-anchor="middle" font-size="10" fill="#64748b">不存卡号</text>
+
+  <!-- Step 3 -->
+  <circle cx="430" cy="350" r="20" fill="#f59e0b"/>
+  <text x="430" y="355" text-anchor="middle" font-size="12" font-weight="700" fill="white">3</text>
+  <text x="430" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">MIT 续费</text>
+  <text x="430" y="400" text-anchor="middle" font-size="10" fill="#64748b">带凭证</text>
+
+  <!-- Step 4 -->
+  <circle cx="570" cy="350" r="20" fill="#f59e0b"/>
+  <text x="570" y="355" text-anchor="middle" font-size="12" font-weight="700" fill="white">4</text>
+  <text x="570" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">扣款失败</text>
+  <text x="570" y="400" text-anchor="middle" font-size="10" fill="#64748b">重试策略</text>
+
+  <!-- Step 5 -->
+  <circle cx="700" cy="350" r="20" fill="#ef4444"/>
+  <text x="700" y="355" text-anchor="middle" font-size="12" font-weight="700" fill="white">5</text>
+  <text x="700" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">卡过期</text>
+  <text x="700" y="400" text-anchor="middle" font-size="10" fill="#64748b">Network Token</text>
+
+  <!-- Arrow -->
+  <path d="M155,350 L255,350" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#arr2)"/>
+  <path d="M305,350 L405,350" stroke="#7c3aed" stroke-width="2" fill="none"/>
+  <path d="M455,350 L545,350" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <path d="M595,350 L675,350" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <defs><marker id="arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#7c3aed"/></marker></defs>
+
+  <!-- Key callout -->
+  <rect x="760" y="380" width="100" height="30" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="810" y="400" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">involuntary churn↓</text>
+</svg>

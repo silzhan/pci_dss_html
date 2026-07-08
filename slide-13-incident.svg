@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="500" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">事件响应 · 关键动作</text>
+  <line x1="330" y1="56" x2="570" y2="56" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Incident severity pyramid -->
+  <rect x="30" y="80" width="520" height="400" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="55" y="108" font-size="16" font-weight="700" fill="#1e293b">事件严重等级与响应</text>
+
+  <!-- Level 1: PAN Leak -->
+  <rect x="50" y="125" width="480" height="65" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <rect x="50" y="125" width="8" height="65" rx="4" fill="#ef4444"/>
+  <text x="80" y="148" font-size="14" font-weight="700" fill="#dc2626">🔴 PAN 泄露</text>
+  <text x="80" y="168" font-size="12" fill="#334155">按 PSP / 收单行 / 卡组织规则通知</text>
+  <text x="80" y="183" font-size="11" fill="#64748b">取证 + 根因分析 + 影响范围评估</text>
+
+  <!-- Level 2: CVV Recorded -->
+  <rect x="50" y="200" width="480" height="65" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <rect x="50" y="200" width="8" height="65" rx="4" fill="#dc2626"/>
+  <text x="80" y="223" font-size="14" font-weight="700" fill="#dc2626">🔴🔴 CVV 被记录（更严重！）</text>
+  <text x="80" y="243" font-size="12" fill="#334155">存储 CVV 本身就是 PCI 禁止的</text>
+  <text x="80" y="258" font-size="11" fill="#64748b">立即删 + 全面排查 + 根因分析 — 没有"意外"说法</text>
+
+  <!-- Level 3: Key Leak -->
+  <rect x="50" y="275" width="480" height="60" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <rect x="50" y="275" width="8" height="60" rx="4" fill="#f59e0b"/>
+  <text x="80" y="298" font-size="14" font-weight="700" fill="#d97706">🟠 密钥泄露</text>
+  <text x="80" y="318" font-size="12" fill="#334155">立即轮换 + 重加密 + 等同 PAN 泄露处置</text>
+
+  <!-- Level 4: JS Tamper -->
+  <rect x="50" y="345" width="480" height="60" rx="10" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="50" y="345" width="8" height="60" rx="4" fill="#f59e0b"/>
+  <text x="80" y="368" font-size="14" font-weight="700" fill="#d97706">🟡 支付页 JS 篡改</text>
+  <text x="80" y="388" font-size="12" fill="#334155">下线页面 → 取证 → 清理 → 加强 CSP/SRI → 重新上线</text>
+
+  <!-- Severity arrow -->
+  <rect x="50" y="420" width="480" height="20" rx="10" fill="#e2e8f0"/>
+  <rect x="50" y="420" width="120" height="20" rx="10" fill="#ef4444" opacity="0.8"/>
+  <rect x="170" y="420" width="120" height="20" fill="#f59e0b" opacity="0.8"/>
+  <rect x="290" y="420" width="120" height="20" fill="#fbbf24" opacity="0.8"/>
+  <rect x="410" y="420" width="120" height="20" rx="10" fill="#86efac" opacity="0.8"/>
+  <text x="110" y="435" text-anchor="middle" font-size="10" font-weight="600" fill="white">紧急</text>
+  <text x="230" y="435" text-anchor="middle" font-size="10" font-weight="600" fill="white">高</text>
+  <text x="350" y="435" text-anchor="middle" font-size="10" font-weight="600" fill="white">中</text>
+  <text x="470" y="435" text-anchor="middle" font-size="10" font-weight="600" fill="#334155">低</text>
+
+  <text x="290" y="460" text-anchor="middle" font-size="12" fill="#64748b">时间线：按外部规则通知，内部按 24h 目标演练</text>
+
+  <!-- Right side: v4.0 requirements -->
+  <rect x="570" y="80" width="300" height="200" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="570" y="80" width="300" height="38" rx="14" fill="#7c3aed"/>
+  <rect x="570" y="105" width="300" height="13" fill="#7c3aed"/>
+  <text x="720" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="white">v4.0 要求</text>
+
+  <text x="590" y="140" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">•</tspan> 事件响应计划每年演练
+  </text>
+  <text x="590" y="165" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">•</tspan> 桌面推演或实战均可
+  </text>
+  <text x="590" y="190" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">•</tspan> 关键人 24/7 联系得上
+  </text>
+  <text x="590" y="215" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">•</tspan> 复盘报告保留三年
+  </text>
+  <text x="590" y="240" font-size="12" fill="#334155">
+    <tspan fill="#7c3aed" font-weight="700">•</tspan> 不能只写 plan 不演练
+  </text>
+
+  <!-- Response timeline -->
+  <rect x="570" y="300" width="300" height="180" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="570" y="300" width="300" height="38" rx="14" fill="#059669"/>
+  <rect x="570" y="325" width="300" height="13" fill="#059669"/>
+  <text x="720" y="325" text-anchor="middle" font-size="14" font-weight="700" fill="white">响应时间线</text>
+
+  <text x="590" y="360" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">T+0h</tspan>   发现事件，启动响应
+  </text>
+  <text x="590" y="385" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">T+4h</tspan>   初步取证，确定影响范围
+  </text>
+  <text x="590" y="410" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">T+24h</tspan>  完成必要通知
+  </text>
+  <text x="590" y="435" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">T+72h</tspan>  详细报告提交
+  </text>
+  <text x="590" y="460" font-size="13" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">T+30d</tspan>  根因 + 整改 + 复盘
+  </text>
+</svg>

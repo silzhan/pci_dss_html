@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="420" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">PCI DSS · 定位与边界</text>
+  <line x1="330" y1="56" x2="570" y2="56" stroke="#1a73e8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Left: What PCI IS -->
+  <rect x="40" y="85" width="400" height="310" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="40" y="85" width="400" height="44" rx="14" fill="#1a73e8"/>
+  <rect x="40" y="110" width="400" height="19" fill="#1a73e8"/>
+  <text x="240" y="113" text-anchor="middle" font-size="16" font-weight="700" fill="white">PCI DSS 是什么</text>
+
+  <text x="70" y="155" font-size="14" fill="#334155">
+    <tspan font-weight="700" fill="#1a73e8">▎</tspan> 支付责任边界，不是通用安全清单
+  </text>
+  <text x="70" y="180" font-size="13" fill="#64748b">  核心：卡数据流 + CDE 安全影响</text>
+
+  <text x="70" y="210" font-size="14" fill="#334155">
+    <tspan font-weight="700" fill="#1a73e8">▎</tspan> 谁处理卡、数据流经哪里、谁影响 CDE
+  </text>
+  <text x="70" y="235" font-size="13" fill="#64748b">  200 个微服务，可能只有少数直接处理卡数据</text>
+
+  <text x="70" y="265" font-size="14" fill="#334155">
+    <tspan font-weight="700" fill="#1a73e8">▎</tspan> 本质是架构决策，不是安全团队的活
+  </text>
+  <text x="70" y="290" font-size="13" fill="#64748b">  Hosted Page vs Direct API → 未来三年合规成本</text>
+
+  <text x="70" y="320" font-size="14" fill="#334155">
+    <tspan font-weight="700" fill="#ef4444">▎</tspan> v4.0：从"年度大考"变成"持续运营"
+  </text>
+  <text x="70" y="345" font-size="13" fill="#64748b">  日志、告警、变更管理都得自动化</text>
+  <text x="70" y="370" font-size="13" fill="#64748b">  年度 snapshot 时代结束了</text>
+
+  <!-- Right: What PCI is NOT -->
+  <rect x="460" y="85" width="400" height="310" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="460" y="85" width="400" height="44" rx="14" fill="#ef4444"/>
+  <rect x="460" y="110" width="400" height="19" fill="#ef4444"/>
+  <text x="660" y="113" text-anchor="middle" font-size="16" font-weight="700" fill="white">常见误解 ❌</text>
+
+  <text x="490" y="155" font-size="14" fill="#334155">
+    <tspan fill="#ef4444" font-weight="700">✗</tspan> "我们没有直接收卡号就没事"
+  </text>
+  <text x="490" y="180" font-size="13" fill="#64748b">  → ELK 一条日志打 PAN，整个集群进 CDE</text>
+
+  <text x="490" y="210" font-size="14" fill="#334155">
+    <tspan fill="#ef4444" font-weight="700">✗</tspan> "PCI 是安全团队的事"
+  </text>
+  <text x="490" y="235" font-size="13" fill="#64748b">  → 产品选型那一刻，合规成本就定了</text>
+
+  <text x="490" y="265" font-size="14" fill="#334155">
+    <tspan fill="#ef4444" font-weight="700">✗</tspan> "年底突击三个月能过"
+  </text>
+  <text x="490" y="290" font-size="13" fill="#64748b">  → v4.0 要求持续监控、持续评估</text>
+
+  <text x="490" y="320" font-size="14" fill="#334155">
+    <tspan fill="#ef4444" font-weight="700">✗</tspan> "PCI = ISO27001 那种通用安全清单"
+  </text>
+  <text x="490" y="345" font-size="13" fill="#64748b">  → 关注卡数据生命周期和 CDE 安全影响</text>
+  <text x="490" y="370" font-size="13" fill="#64748b">  → 剩余系统要证明不影响 CDE</text>
+</svg>

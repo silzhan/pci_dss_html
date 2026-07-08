@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI','Microsoft YaHei',sans-serif">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="900" height="480" rx="12" fill="#f8fafc"/>
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">认证等级与验证方式</text>
+  <line x1="330" y1="56" x2="570" y2="56" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Merchant Levels -->
+  <rect x="30" y="80" width="420" height="180" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="30" y="80" width="420" height="40" rx="14" fill="#1a73e8"/>
+  <rect x="30" y="105" width="420" height="15" fill="#1a73e8"/>
+  <text x="240" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="white">商户等级 (Merchant Level)</text>
+
+  <!-- Level bars -->
+  <text x="55" y="145" font-size="13" font-weight="600" fill="#334155">Level 1</text>
+  <rect x="120" y="130" width="310" height="22" rx="4" fill="#ef4444" opacity="0.85"/>
+  <text x="275" y="146" text-anchor="middle" font-size="12" fill="white">> 600 万笔/年  ·  ROC + QSA 现场审</text>
+
+  <text x="55" y="175" font-size="13" font-weight="600" fill="#334155">Level 2</text>
+  <rect x="120" y="160" width="230" height="22" rx="4" fill="#f59e0b" opacity="0.85"/>
+  <text x="235" y="176" text-anchor="middle" font-size="12" fill="white">100~600 万笔  ·  SAQ + ASV</text>
+
+  <text x="55" y="205" font-size="13" font-weight="600" fill="#334155">Level 3</text>
+  <rect x="120" y="190" width="160" height="22" rx="4" fill="#14b8a6" opacity="0.85"/>
+  <text x="200" y="206" text-anchor="middle" font-size="12" fill="white">20~100 万笔  ·  SAQ + ASV</text>
+
+  <text x="55" y="235" font-size="13" font-weight="600" fill="#334155">Level 4</text>
+  <rect x="120" y="220" width="100" height="22" rx="4" fill="#0d9488" opacity="0.85"/>
+  <text x="170" y="236" text-anchor="middle" font-size="12" fill="white">&lt; 20 万笔  ·  SAQ</text>
+
+  <!-- SP Levels -->
+  <rect x="470" y="80" width="400" height="180" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="470" y="80" width="400" height="40" rx="14" fill="#7c3aed"/>
+  <rect x="470" y="105" width="400" height="15" fill="#7c3aed"/>
+  <text x="670" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="white">服务商等级 (SP Level)</text>
+
+  <rect x="490" y="135" width="360" height="50" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="510" y="157" font-size="14" font-weight="600" fill="#5b21b6">SP Level 1</text>
+  <text x="510" y="175" font-size="12" fill="#6d28d9">平台/网关/Vault 服务商  ·  ROC + QSA 必须</text>
+
+  <rect x="490" y="195" width="360" height="50" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="510" y="217" font-size="14" font-weight="600" fill="#5b21b6">SP Level 2</text>
+  <text x="510" y="235" font-size="12" fill="#6d28d9">其他服务商  ·  SAQ + ASV</text>
+
+  <!-- SAQ Decision -->
+  <rect x="30" y="285" width="840" height="175" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="30" y="285" width="840" height="40" rx="14" fill="#059669"/>
+  <rect x="30" y="310" width="840" height="15" fill="#059669"/>
+  <text x="450" y="311" text-anchor="middle" font-size="15" font-weight="700" fill="white">SAQ 类型 = 由接入方式决定（不是安全团队选的！）</text>
+
+  <!-- SAQ boxes -->
+  <rect x="50" y="340" width="180" height="70" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="140" y="365" text-anchor="middle" font-size="15" font-weight="700" fill="#059669">SAQ A</text>
+  <text x="140" y="385" text-anchor="middle" font-size="12" fill="#047857">Hosted Page</text>
+  <text x="140" y="400" text-anchor="middle" font-size="11" fill="#6b7280">工作量最小</text>
+
+  <rect x="260" y="340" width="180" height="70" rx="10" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="350" y="365" text-anchor="middle" font-size="15" font-weight="700" fill="#059669">SAQ A-EP</text>
+  <text x="350" y="385" text-anchor="middle" font-size="12" fill="#047857">iframe / Elements</text>
+  <text x="350" y="400" text-anchor="middle" font-size="11" fill="#6b7280">甜点区</text>
+
+  <rect x="470" y="340" width="180" height="70" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="560" y="365" text-anchor="middle" font-size="15" font-weight="700" fill="#dc2626">SAQ C</text>
+  <text x="560" y="385" text-anchor="middle" font-size="12" fill="#b91c1c">自有支付系统</text>
+  <text x="560" y="400" text-anchor="middle" font-size="11" fill="#6b7280">较多问卷</text>
+
+  <rect x="680" y="340" width="170" height="70" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="765" y="365" text-anchor="middle" font-size="15" font-weight="700" fill="#dc2626">SAQ D</text>
+  <text x="765" y="385" text-anchor="middle" font-size="12" fill="#b91c1c">Direct API</text>
+  <text x="765" y="400" text-anchor="middle" font-size="11" fill="#6b7280">300+ 问题，工作量最大</text>
+
+  <!-- Arrows between SAQ boxes -->
+  <text x="240" y="380" text-anchor="middle" font-size="20" fill="#94a3b8">→</text>
+  <text x="450" y="380" text-anchor="middle" font-size="20" fill="#94a3b8">→</text>
+  <text x="660" y="380" text-anchor="middle" font-size="20" fill="#94a3b8">→</text>
+
+  <!-- v4.0 callout -->
+  <rect x="50" y="430" width="800" height="35" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1"/>
+  <text x="450" y="453" text-anchor="middle" font-size="13" fill="#c2410c">
+    <tspan font-weight="700">v4.0 变化：</tspan>持续合规，非年度 snapshot  ·  验证材料：SAQ / AOC / ROC / ASV 扫描 / 渗透测试
+  </text>
+</svg>
