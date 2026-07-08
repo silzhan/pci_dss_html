@@ -1,0 +1,801 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCI DSS v4.0 培训 · 商务版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;background:#1a1f2e;color:#e2e8f0}
+#app{display:flex;flex-direction:column;height:100%}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:6px 20px;background:#141824;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.bl{display:flex;align-items:center;gap:10px}
+.bl .dot{width:24px;height:24px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff}
+.bl h1{font-size:14px;font-weight:600;color:#e2e8f0}
+.br{display:flex;gap:4px;align-items:center}
+.br button{background:transparent;border:1px solid rgba(255,255,255,.08);color:#94a3b8;padding:4px 10px;border-radius:5px;font-size:11px;cursor:pointer;font-family:inherit}
+.br button:hover{background:rgba(255,255,255,.06);color:#e2e8f0}
+.br button:disabled{opacity:.2;cursor:default}
+.br button.on{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3);color:#a5b4fc}
+.cnt{font-size:11px;color:#475569;min-width:44px;text-align:center}
+.prog{height:2px;background:rgba(255,255,255,.03);flex-shrink:0}
+.pbar{height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);transition:width .35s}
+.main{flex:1;display:flex;overflow:hidden}
+.sa{flex:1;display:flex;align-items:center;justify-content:center;padding:16px 48px;position:relative;background:#1a1f2e;overflow-y:auto}
+.sw{width:100%;max-width:1000px;margin:0 auto}
+.slide{width:100%}
+.slide-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sh-num{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px}
+.sh-title{font-size:20px;font-weight:700;color:#f1f5f9}
+.slide-body{font-size:13px;color:#cbd5e1;line-height:1.6}
+
+/* Layout */
+.two-col{display:flex;gap:16px}
+.two-col>div,.two-col>.col-box{flex:1}
+.cards-row{display:flex;gap:12px}
+
+/* Card */
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px;flex:1}
+.card-blue{border-left:3px solid #2563eb}
+.card-teal{border-left:3px solid #0d9488}
+.card-amber{border-left:3px solid #d97706}
+.card-red{border-left:3px solid #dc2626}
+.card-green{border-left:3px solid #059669}
+.card-purple{border-left:3px solid #7c3aed}
+.card-cyan{border-left:3px solid #0891b2}
+.card-icon{font-size:28px}
+.card-num{font-size:11px;color:#475569;margin-top:4px}
+.card-title{font-size:15px;font-weight:700;color:#f1f5f9;margin-top:2px}
+.card-desc{font-size:12px;color:#94a3b8;margin-top:2px}
+.card-q{font-size:11px;color:#64748b;margin-top:6px;font-style:italic}
+.card-line{font-size:12px;color:#cbd5e1;margin-top:3px}
+.card-line b{font-weight:700}
+.card-warn{font-size:11px;color:#92400e;margin-top:6px}
+.card-ok{font-size:11px;color:#059669;margin-top:2px}
+.card-tag{font-size:13px;font-weight:700;padding-bottom:6px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,.06)}
+.green-tag{color:#059669}.teal-tag{color:#0d9488}.red-tag{color:#dc2626}.purple-tag{color:#7c3aed}.cyan-tag{color:#0891b2}.amber-tag{color:#d97706}
+
+/* Column box */
+.col-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
+.col-header{font-size:14px;font-weight:700;padding:8px 12px;border-radius:6px;margin:-12px -14px 10px -14px}
+.col-header.blue{background:rgba(37,99,235,.15);color:#60a5fa}
+.col-header.red{background:rgba(220,38,38,.15);color:#f87171}
+.col-header.green{background:rgba(5,150,105,.15);color:#34d399}
+.col-header.purple{background:rgba(124,58,237,.15);color:#a78bfa}
+.col-header.amber{background:rgba(217,119,6,.15);color:#fbbf24}
+.col-item{font-size:12px;color:#cbd5e1;padding:4px 0;display:flex;align-items:flex-start;gap:8px}
+.col-sub{font-size:11px;color:#64748b;margin-top:1px;margin-left:16px}
+
+/* Dots */
+.dot{width:6px;height:6px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.blue-dot{background:#3b82f6}.red-dot{background:#ef4444}.purple-dot{background:#8b5cf6}.amber-dot{background:#f59e0b}.green-dot{background:#10b981}.indigo-dot{background:#6366f1}
+
+/* X mark */
+.x-mark{color:#ef4444;font-weight:700;margin-right:4px}
+
+/* Flow bar */
+.flow-bar{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;padding:10px 16px;background:rgba(255,255,255,.03);border-radius:8px;font-size:12px;color:#94a3b8;flex-wrap:wrap}
+.flow-arrow{color:#475569;font-size:14px}
+
+/* Hero */
+.hero-title{font-size:32px;font-weight:800;color:#f1f5f9;text-align:center}
+.hero-sub{font-size:15px;color:#94a3b8;text-align:center;margin-top:6px}
+
+/* Level bars */
+.level-bar{display:flex;align-items:center;padding:6px 10px;border-radius:6px;margin-top:6px;color:#fff;font-size:12px}
+.level-label{font-weight:700;width:55px}
+.level-text{flex:1}
+.red-bar{background:rgba(239,68,68,.7)}.amber-bar{background:rgba(245,158,11,.7)}.teal-bar{background:rgba(20,184,166,.7)}.green-bar{background:rgba(13,148,136,.7)}
+
+/* SP cards */
+.sp-card{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:8px;padding:10px;margin-top:8px}
+.sp-label{font-weight:700;color:#a78bfa;font-size:13px}
+.sp-desc{font-size:12px;color:#6d28d9;margin-top:2px}
+
+/* SAQ */
+.saq-row{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}
+.saq-box{padding:10px;border-radius:8px;text-align:center;flex:1;min-width:100px}
+.saq-green{background:rgba(5,150,105,.1);border:1px solid rgba(5,150,105,.3)}
+.saq-red{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3)}
+.saq-type{font-size:15px;font-weight:700;color:#059669}
+.saq-red .saq-type{color:#dc2626}
+.saq-way{font-size:12px;color:#334155;margin-top:2px}
+.saq-note{font-size:11px;color:#64748b;margin-top:2px}
+
+/* Callout */
+.callout-bar{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:8px 12px;font-size:12px;color:#d97706;margin-top:10px;text-align:center}
+.blue-callout-bar{background:rgba(37,99,235,.08);border-color:rgba(37,99,235,.2);color:#60a5fa}
+.callout-box{border-radius:6px;padding:8px 12px;font-size:12px;margin-top:8px}
+.red-callout{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:#f87171}
+.blue-callout{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:#60a5fa}
+
+/* Scope diagram */
+.scope-diagram{position:relative;width:100%;aspect-ratio:1.2/1;flex:1}
+.scope-ring{position:absolute;border-radius:50%;border:2px dashed;display:flex;align-items:flex-start;justify-content:center}
+.ring-outer{inset:0;border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.03)}
+.ring-mid{inset:12%;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.03)}
+.ring-inner{inset:26%;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.05)}
+.ring-label{font-size:10px;font-weight:600;margin-top:4px}
+.red-label{color:#ef4444}.amber-label{color:#f59e0b}.blue-label{color:#3b82f6}
+.scope-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#2563eb;color:#fff;padding:10px 16px;border-radius:8px;text-align:center;font-size:13px;font-weight:700;z-index:2}
+.scope-center small{font-size:10px;font-weight:400;opacity:.8}
+.scope-items{position:absolute;inset:0}
+.si{position:absolute;font-size:10px;font-weight:600;white-space:nowrap}
+.blue-si{color:#3b82f6}.amber-si{color:#f59e0b}.red-si{color:#ef4444}
+
+/* Scope list */
+.scope-list{margin-top:6px}
+.sl-item{font-size:12px;color:#cbd5e1;padding:3px 0;display:flex;align-items:center;gap:8px}
+.sl-num{width:18px;height:18px;border-radius:50%;background:rgba(5,150,105,.2);color:#059669;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.red-num{background:rgba(220,38,38,.2);color:#dc2626}
+
+/* Spectrum */
+.spectrum-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#059669,#14b8a6,#f59e0b,#ef4444);position:relative;opacity:.7}
+.spec-fill{position:absolute;inset:0;border-radius:7px;background:linear-gradient(90deg,rgba(5,150,105,.5),rgba(20,184,166,.5),rgba(245,158,11,.5),rgba(239,68,68,.5))}
+.spec-left,.spec-right{position:absolute;top:18px;font-size:10px;font-weight:600;color:#94a3b8}
+.spec-left{left:0}.spec-right{right:0}
+
+/* Timeline */
+.timeline{display:flex;align-items:center;gap:0;margin-top:10px;justify-content:center}
+.tl-step{text-align:center}
+.tl-circle{width:32px;height:32px;border-radius:50%;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto}
+.purple-bg{background:#7c3aed}.amber-bg{background:#f59e0b}.red-bg{background:#ef4444}
+.tl-label{font-size:11px;font-weight:600;color:#e2e8f0;margin-top:4px}
+.tl-sub{font-size:10px;color:#64748b}
+.tl-line{width:40px;height:2px;background:rgba(255,255,255,.1);margin:0 4px;margin-bottom:20px}
+
+/* Token table */
+.token-table{width:100%}
+.tt-header{display:flex;background:rgba(255,255,255,.06);border-radius:6px 6px 0 0;font-size:11px;font-weight:700;color:#94a3b8}
+.tt-cell{padding:8px 10px;flex:1;text-align:center}
+.tt-row{display:flex;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px;color:#cbd5e1}
+.tt-row:last-child{border-bottom:none}
+.highlight-row{background:rgba(5,150,105,.06);border:1px solid rgba(5,150,105,.15);border-radius:6px}
+.tt-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px}
+.green-text{color:#059669}
+
+/* Vault diagram */
+.vault-diagram{display:flex;align-items:center;gap:6px;justify-content:center;margin:10px 0;font-size:12px}
+.vd-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:6px 10px;text-align:center}
+.vd-filled{background:rgba(5,150,105,.2);border-color:rgba(5,150,105,.3);color:#059669;font-weight:600}
+.amber-fill{background:rgba(217,119,6,.2);border-color:rgba(217,119,6,.3);color:#d97706}
+.red-fill{background:rgba(220,38,38,.2);border-color:rgba(220,38,38,.3);color:#dc2626}
+.vd-boxs{font-size:10px;color:#64748b;line-height:1.4}
+.vd-arrow{color:#475569;font-size:14px}
+
+/* Mini cards */
+.mini-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px;flex:1;text-align:center}
+.blue-mini{border-top:2px solid #3b82f6}.green-mini{border-top:2px solid #10b981}.red-mini{border-top:2px solid #ef4444}.amber-mini{border-top:2px solid #f59e0b}
+.mc-title{font-size:13px;font-weight:700;color:#e2e8f0}
+.mc-desc{font-size:11px;color:#94a3b8;margin-top:3px}
+
+/* Envelope */
+.envelope-stack{display:flex;flex-direction:column;align-items:center;gap:0}
+.env-layer{width:100%;padding:10px;border-radius:8px;text-align:center;font-size:13px;font-weight:600;position:relative}
+.red-layer{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171}
+.amber-layer{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:#fbbf24}
+.blue-layer{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);color:#60a5fa}
+.dark-layer{background:rgba(30,41,59,.8);border:1px solid rgba(255,255,255,.1);color:#e2e8f0}
+.env-note{font-size:11px;font-weight:400;opacity:.7;margin-top:2px}
+.env-arrow{color:#475569;font-size:14px;margin:2px 0}
+.env-arrow-label{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:10px;color:#94a3b8;font-weight:400}
+
+/* Attack flow */
+.attack-flow{display:flex;align-items:center;gap:6px;margin:10px 0;flex-wrap:wrap}
+.af-step{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:6px;padding:8px;text-align:center;font-size:11px;font-weight:600;color:#f87171;flex:1;min-width:80px}
+.af-step small{font-weight:400;color:#b91c1c;display:block;margin-top:2px}
+.case-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:10px;margin-top:10px}
+.case-title{font-size:13px;font-weight:700;color:#92400e}
+.case-text{font-size:12px;color:#78350f;margin-top:3px}
+.case-sub{font-size:11px;color:#a16207;margin-top:3px;font-style:italic}
+
+/* Data governance */
+.center-source{background:#2563eb;color:#fff;padding:14px 20px;border-radius:10px;text-align:center;font-size:14px;font-weight:700;width:fit-content;margin:0 auto 20px}
+.cs-sub{font-size:11px;font-weight:400;opacity:.8;margin-top:2px}
+.radial-items{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.ri-box{position:static;background:rgba(255,255,255,.04);border-radius:8px;padding:9px 10px;font-size:11px;min-height:82px;display:flex;flex-direction:column;justify-content:center}
+.ri-box small{color:#64748b}
+.red-ri{border:1px solid rgba(239,68,68,.2)}.amber-ri{border:1px solid rgba(245,158,11,.2)}
+
+/* Pipeline */
+.pipeline{display:flex;align-items:center;gap:6px;margin:10px 0;flex-wrap:wrap;justify-content:center}
+.pl-stage{text-align:center;padding:10px;border-radius:8px;flex:1;min-width:80px}
+.blue-pl{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2)}.purple-pl{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2)}.amber-pl{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}.red-pl{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2)}.green-pl{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2)}
+.pl-icon{font-size:20px}
+.pl-name{font-size:13px;font-weight:700;color:#e2e8f0;margin-top:4px}
+.pl-desc{font-size:10px;color:#94a3b8;margin-top:3px}
+.env-box{text-align:center;font-size:12px;color:#94a3b8;margin-top:8px;padding:6px;background:rgba(255,255,255,.03);border-radius:6px}
+
+/* Incident */
+.incident-card{display:flex;gap:10px;padding:10px;border-radius:8px;margin-top:8px;align-items:flex-start;background:rgba(255,255,255,.02)}
+.red-border{border-left:3px solid #ef4444}.deep-red-border{border-left:3px solid #dc2626;background:rgba(220,38,38,.04)}.amber-border{border-left:3px solid #f59e0b}.yellow-border{border-left:3px solid #eab308}
+.ic-sev{font-size:16px;flex-shrink:0}
+.ic-title{font-size:13px;font-weight:700;color:#e2e8f0}
+.ic-desc{font-size:12px;color:#cbd5e1;margin-top:2px}
+.ic-sub{font-size:11px;color:#64748b;margin-top:2px}
+.sev-bar{display:flex;gap:0;margin-top:10px;border-radius:4px;overflow:hidden}
+.sv{flex:1;text-align:center;font-size:10px;font-weight:600;padding:4px;color:#fff}
+.red-sv{background:rgba(239,68,68,.8)}.amber-sv{background:rgba(245,158,11,.8)}.yellow-sv{background:rgba(234,179,8,.8)}.green-sv{background:rgba(34,197,94,.6)}
+
+/* Timeline list */
+.tl-list{margin-top:4px}
+.tll-item{font-size:12px;color:#cbd5e1;padding:4px 0}
+.tll-time{font-weight:700;margin-right:8px}
+.red-text{color:#ef4444}
+
+/* Summary flow */
+.fb-item{padding:10px 16px;border-radius:8px;text-align:center}
+.blue-fb{background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.2)}.teal-fb{background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.2)}.amber-fb{background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.2)}.red-fb{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.2)}
+.fb-title{font-size:13px;font-weight:700;color:#e2e8f0}
+.fb-sub{font-size:11px;color:#94a3b8;margin-top:2px}
+
+/* Notes panel */
+.np{width:0;overflow:hidden;background:#111524;border-left:1px solid rgba(255,255,255,.04);transition:width .25s;flex-shrink:0}
+.np.open{width:340px}
+.ni{width:340px;height:100%;overflow-y:auto;padding:14px 18px}
+.ni h3{font-size:11px;color:#475569;margin-bottom:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px}
+.ni .nt{font-size:16px;font-weight:700;color:#e2e8f0;margin-bottom:3px}
+.ni .nm{font-size:10px;color:#334155;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.ni .nd{font-size:12px;color:#94a3b8;line-height:1.85}
+.ni .nd b{color:#60a5fa;font-weight:600}
+
+/* Nav */
+.arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(26,31,46,.8);border:1px solid rgba(255,255,255,.06);color:#64748b;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+.arr:hover{background:rgba(37,99,235,.6);color:#fff}
+.arr:disabled{opacity:.08;cursor:default;pointer-events:none}
+.al{left:8px}.ar{right:8px}
+
+/* Module overlay */
+.mo{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(26,31,46,.97);z-index:50;opacity:0;pointer-events:none;transition:opacity .35s}
+.mo.show{opacity:1;pointer-events:auto}
+.mo .mt{font-size:12px;color:#475569;text-transform:uppercase;letter-spacing:4px;margin-bottom:10px}
+.mo .mh{font-size:40px;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.kh{position:fixed;bottom:8px;right:14px;font-size:9px;color:#1e293b}
+.kh kbd{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:0 3px;border-radius:2px;font-family:inherit}
+
+@media(max-width:768px){.two-col{flex-direction:column}.cards-row{flex-direction:column}.radial-items{grid-template-columns:1fr}.sa{padding:12px 16px}}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:3px}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="bar"><div class="bl"><div class="dot">P</div><h1>PCI DSS v4.0</h1></div>
+<div class="br"><span class="cnt" id="cnt">1 / 14</span>
+<button id="bp" onclick="go(-1)">◀</button><button id="bn" onclick="go(1)">▶</button>
+<button id="bno" onclick="tn()">📝</button><button onclick="fs()">⛶</button></div></div>
+<div class="prog"><div class="pbar" id="pb"></div></div>
+<div class="main">
+<div class="sa">
+<button class="arr al" id="al" onclick="go(-1)">‹</button>
+<div class="sw" id="sw">
+<div class="slide" id="s0" style="display:none" data-mod="模块一">
+<div class="slide-head"><span class="sh-num">01</span><span class="sh-title">目录 · 四大模块</span></div>
+<div class="slide-body">
+<div class="hero-title">PCI DSS 培训</div>
+<div class="hero-sub">把合规翻译成产品、架构、运营能听懂的语言</div>
+<div class="cards-row" style="margin-top:32px">
+  <div class="card card-blue">
+    <div class="card-icon">📋</div>
+    <div class="card-num">01</div>
+    <div class="card-title">合规判断</div>
+    <div class="card-desc">等级 · SAQ · Scope</div>
+    <div class="card-q">我们在 Scope 里吗？</div>
+  </div>
+  <div class="card card-teal">
+    <div class="card-icon">🛒</div>
+    <div class="card-num">02</div>
+    <div class="card-title">产品落地</div>
+    <div class="card-desc">接入 · CIT/MIT · Token</div>
+    <div class="card-q">选型压最小成本？</div>
+  </div>
+  <div class="card card-amber">
+    <div class="card-icon">🏗️</div>
+    <div class="card-num">03</div>
+    <div class="card-title">技术架构</div>
+    <div class="card-desc">Vault · 密钥 · 前端</div>
+    <div class="card-q">怎么落地？</div>
+  </div>
+  <div class="card card-red">
+    <div class="card-icon">🔍</div>
+    <div class="card-num">04</div>
+    <div class="card-title">运营审计</div>
+    <div class="card-desc">测试 · 权限 · 响应</div>
+    <div class="card-q">怎么兜底？</div>
+  </div>
+</div>
+<div class="flow-bar">
+  <span>要求是什么</span><span class="flow-arrow">→</span>
+  <span>怎么设计降成本</span><span class="flow-arrow">→</span>
+  <span>怎么落地</span><span class="flow-arrow">→</span>
+  <span>怎么证明做到了</span>
+</div>
+</div>
+</div>
+<div class="slide" id="s1" style="display:none">
+<div class="slide-head"><span class="sh-num">02</span><span class="sh-title">定位与边界</span></div>
+<div class="slide-body">
+<div class="two-col">
+  <div class="col-box">
+    <div class="col-header blue">PCI DSS 是什么</div>
+    <div class="col-item"><span class="dot blue-dot"></span>支付责任边界，不是通用安全清单<div class="col-sub">核心：卡数据流 + CDE 安全影响</div></div>
+    <div class="col-item"><span class="dot blue-dot"></span>谁处理卡、数据流经哪里、谁影响 CDE<div class="col-sub">200 个微服务，可能只有少数直接处理卡数据</div></div>
+    <div class="col-item"><span class="dot blue-dot"></span>本质是架构决策，不是安全团队的活<div class="col-sub">Hosted Page vs Direct API → 未来三年合规成本</div></div>
+    <div class="col-item"><span class="dot red-dot"></span>v4.0：从"年度大考"变成"持续运营"<div class="col-sub">日志、告警、变更管理都得自动化</div></div>
+  </div>
+  <div class="col-box">
+    <div class="col-header red">常见误解 ❌</div>
+    <div class="col-item"><span class="x-mark">✗</span>"没有直接收卡号就没事"<div class="col-sub">→ ELK 一条日志打 PAN，整个集群进 CDE</div></div>
+    <div class="col-item"><span class="x-mark">✗</span>"PCI 是安全团队的事"<div class="col-sub">→ 产品选型那一刻，合规成本就定了</div></div>
+    <div class="col-item"><span class="x-mark">✗</span>"年底突击三个月能过"<div class="col-sub">→ v4.0 要求持续监控、持续评估</div></div>
+    <div class="col-item"><span class="x-mark">✗</span>"PCI = ISO27001 通用安全清单"<div class="col-sub">→ 关注卡数据生命周期和 CDE 安全影响</div></div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s2" style="display:none">
+<div class="slide-head"><span class="sh-num">03</span><span class="sh-title">认证等级与验证方式</span></div>
+<div class="slide-body">
+<div class="two-col" style="gap:20px">
+  <div class="col-box">
+    <div class="col-header blue">商户等级 (Merchant Level)</div>
+    <div class="level-bar red-bar"><span class="level-label">Level 1</span><span class="level-text">&gt; 600 万笔/年 · ROC + QSA 现场审</span></div>
+    <div class="level-bar amber-bar"><span class="level-label">Level 2</span><span class="level-text">100~600 万笔 · SAQ + ASV</span></div>
+    <div class="level-bar teal-bar"><span class="level-label">Level 3</span><span class="level-text">20~100 万笔 · SAQ + ASV</span></div>
+    <div class="level-bar green-bar"><span class="level-label">Level 4</span><span class="level-text">&lt; 20 万笔 · SAQ</span></div>
+  </div>
+  <div class="col-box">
+    <div class="col-header purple">服务商等级 (SP Level)</div>
+    <div class="sp-card"><span class="sp-label">SP Level 1</span><span class="sp-desc">平台/网关/Vault 服务商 · ROC + QSA 必须</span></div>
+    <div class="sp-card"><span class="sp-label">SP Level 2</span><span class="sp-desc">其他服务商 · SAQ + ASV</span></div>
+  </div>
+</div>
+<div class="col-box" style="margin-top:16px">
+  <div class="col-header green">SAQ 类型 = 由接入方式决定（不是安全团队选的！）</div>
+  <div class="saq-row">
+    <div class="saq-box saq-green"><div class="saq-type">SAQ A</div><div class="saq-way">Hosted Page</div><div class="saq-note">工作量最小</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="saq-box saq-green"><div class="saq-type">SAQ A-EP</div><div class="saq-way">iframe / Elements</div><div class="saq-note">甜点区</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="saq-box saq-red"><div class="saq-type">SAQ C</div><div class="saq-way">自有支付系统</div><div class="saq-note">较多问卷</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="saq-box saq-red"><div class="saq-type">SAQ D</div><div class="saq-way">Direct API</div><div class="saq-note">300+ 问题</div></div>
+  </div>
+</div>
+<div class="callout-bar">v4.0 变化：持续合规，非年度 snapshot · 验证材料：SAQ / AOC / ROC / ASV 扫描 / 渗透测试</div>
+</div>
+</div>
+<div class="slide" id="s3" style="display:none">
+<div class="slide-head"><span class="sh-num">04</span><span class="sh-title">PCI Scope · 范围边界</span></div>
+<div class="slide-body">
+<div class="two-col">
+  <div class="scope-diagram">
+    <div class="scope-ring ring-outer"><span class="ring-label red-label">周边系统（风险盲区）</span></div>
+    <div class="scope-ring ring-mid"><span class="ring-label amber-label">Scope 边界</span></div>
+    <div class="scope-ring ring-inner"><span class="ring-label blue-label">CDE 核心</span></div>
+    <div class="scope-center">💳 卡数据<br><small>CHD/PAN · SAD 授权中</small></div>
+    <div class="scope-items">
+      <span class="si blue-si" style="top:30%;left:15%">支付 API</span>
+      <span class="si blue-si" style="top:30%;right:15%">Vault</span>
+      <span class="si blue-si" style="bottom:25%;left:15%">数据库</span>
+      <span class="si blue-si" style="bottom:25%;right:15%">HSM/KMS</span>
+      <span class="si amber-si" style="top:15%;left:5%">日志系统</span>
+      <span class="si amber-si" style="bottom:10%;left:5%">跳板机</span>
+      <span class="si amber-si" style="top:15%;right:5%">缓存/MQ</span>
+      <span class="si amber-si" style="bottom:10%;right:5%">CI/CD</span>
+      <span class="si red-si" style="top:5%;left:30%">错误日志打 PAN</span>
+      <span class="si red-si" style="top:5%;right:25%">APM 采请求体</span>
+      <span class="si red-si" style="bottom:5%;left:30%">测试环境真实卡</span>
+      <span class="si red-si" style="bottom:5%;right:25%">BI 同步未脱敏</span>
+    </div>
+  </div>
+  <div class="col-box">
+    <div class="col-header green">降 Scope 七件套</div>
+    <div class="scope-list">
+      <div class="sl-item"><span class="sl-num">1</span>Hosted Page — 能不碰就不碰</div>
+      <div class="sl-item"><span class="sl-num">2</span>iframe / Elements</div>
+      <div class="sl-item"><span class="sl-num">3</span>PSP Token 替代 PAN</div>
+      <div class="sl-item"><span class="sl-num">4</span>CDE 网段隔离</div>
+      <div class="sl-item"><span class="sl-num">5</span>日志脱敏</div>
+      <div class="sl-item"><span class="sl-num">6</span>最小权限</div>
+      <div class="sl-item"><span class="sl-num red-num">7</span>授权后不存 CVV</div>
+    </div>
+    <div class="callout-box red-callout">⚠ 授权后存 CVV = 重大不符合<br><small>必须立即整改</small></div>
+    <div class="callout-box blue-callout">原则：能不碰就不碰<br><small>碰了就脱敏 → 隔离 → 加密</small></div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s4" style="display:none">
+<div class="slide-head"><span class="sh-num">05</span><span class="sh-title">支付产品形态与 PCI 影响</span></div>
+<div class="slide-body">
+<div class="spectrum-bar"><div class="spec-fill"></div><span class="spec-left">最小 Scope</span><span class="spec-right">最大 Scope</span></div>
+<div class="cards-row" style="margin-top:16px">
+  <div class="card card-green" style="flex:1">
+    <div class="card-tag green-tag">🟢 Hosted Page</div>
+    <div class="card-line">SAQ: <b>A</b>（最小）</div>
+    <div class="card-line">跳转到 PSP 页面</div>
+    <div class="card-line">商户完全不碰卡数据</div>
+    <div class="card-warn">⚠ 跳转伤转化率</div>
+    <div class="card-ok">✅ 快速上线、低合规预算</div>
+  </div>
+  <div class="card card-teal" style="flex:1.1">
+    <div class="card-tag teal-tag">🟡 Embedded / Elements</div>
+    <div class="card-line">SAQ: <b>A-EP</b>（甜点区）</div>
+    <div class="card-line">iframe 嵌入，前端担责</div>
+    <div class="card-line">后端只拿 token，体验好</div>
+    <div class="card-warn">⚠ 需管 CSP / SRI / 脚本白名单</div>
+    <div class="card-ok">✅ 大多数商户的最佳选择</div>
+  </div>
+  <div class="card card-red" style="flex:1">
+    <div class="card-tag red-tag">🔴 Direct API</div>
+    <div class="card-line">SAQ: <b>D</b>（300+ 问题）</div>
+    <div class="card-line">卡数据直接过你的服务器</div>
+    <div class="card-line">全量 PCI 合规</div>
+    <div class="card-warn">⚠ 合规成本最高</div>
+    <div class="card-ok">✅ 自建风控 / 多 PSP / Vault</div>
+  </div>
+</div>
+<div class="cards-row" style="margin-top:12px">
+  <div class="card card-purple" style="flex:1">
+    <div class="card-tag purple-tag">🟣 PayFac 模式</div>
+    <div class="card-line">平台做 Master Merchant</div>
+    <div class="card-line">子商户快速 onboarding</div>
+    <div class="card-warn">⚠ 平台扛 PCI Level 1</div>
+    <div class="card-ok">✅ 平台型商户规模化</div>
+  </div>
+  <div class="card card-cyan" style="flex:1">
+    <div class="card-tag cyan-tag">⚪ Click to Pay / Passkey</div>
+    <div class="card-line">卡数据在卡组织/用户设备</div>
+    <div class="card-line">商户侧卡数据暴露面极低</div>
+    <div class="card-ok">✅ 体验和合规双赢</div>
+    <div class="card-ok">✅ 未来趋势，FIDO2 基础设施</div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s5" style="display:none">
+<div class="slide-head"><span class="sh-num">06</span><span class="sh-title">CIT / MIT 与业务场景</span></div>
+<div class="slide-body">
+<div class="two-col">
+  <div class="col-box">
+    <div class="col-header purple">CIT · 买家在场</div>
+    <div class="col-item"><span class="dot purple-dot"></span>首笔支付、注册绑卡</div>
+    <div class="col-item"><span class="dot purple-dot"></span>通常需 3DS/SCA 或满足豁免</div>
+    <div class="col-item"><span class="dot purple-dot"></span>建立后续 MIT 的授权凭证</div>
+    <div class="col-item"><span class="dot purple-dot"></span>买家主动确认交易金额/频率</div>
+  </div>
+  <div class="col-box">
+    <div class="col-header amber">MIT · 商户发起</div>
+    <div class="col-item"><span class="dot amber-dot"></span>订阅续费、分期扣款</div>
+    <div class="col-item"><span class="dot amber-dot"></span>必须带首次 CIT 的凭证</div>
+    <div class="col-item"><span class="dot amber-dot"></span>金额/频率不能超授权范围</div>
+    <div class="col-item"><span class="dot amber-dot"></span>免密扣款、自动续费</div>
+  </div>
+</div>
+<div class="col-box" style="margin-top:16px">
+  <div class="col-header blue">订阅生命周期</div>
+  <div class="timeline">
+    <div class="tl-step"><div class="tl-circle purple-bg">1</div><div class="tl-label">首笔 CIT</div><div class="tl-sub">认证/豁免</div></div>
+    <div class="tl-line"></div>
+    <div class="tl-step"><div class="tl-circle purple-bg">2</div><div class="tl-label">存 Token</div><div class="tl-sub">不存卡号</div></div>
+    <div class="tl-line"></div>
+    <div class="tl-step"><div class="tl-circle amber-bg">3</div><div class="tl-label">MIT 续费</div><div class="tl-sub">带凭证</div></div>
+    <div class="tl-line"></div>
+    <div class="tl-step"><div class="tl-circle amber-bg">4</div><div class="tl-label">扣款失败</div><div class="tl-sub">重试策略</div></div>
+    <div class="tl-line"></div>
+    <div class="tl-step"><div class="tl-circle red-bg">5</div><div class="tl-label">卡过期</div><div class="tl-sub">Network Token</div></div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s6" style="display:none">
+<div class="slide-head"><span class="sh-num">07</span><span class="sh-title">Tokenization · 四种 Token 对比</span></div>
+<div class="slide-body">
+<div class="col-box">
+  <div class="token-table">
+    <div class="tt-header"><div class="tt-cell" style="flex:1.2">Token 类型</div><div class="tt-cell">跨 PSP</div><div class="tt-cell">可逆</div><div class="tt-cell" style="flex:1.5">关键特性</div><div class="tt-cell">适用</div></div>
+    <div class="tt-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot red-dot"></span><b>PSP Token</b><br><small>PSP 发的 token</small></div><div class="tt-cell">❌</div><div class="tt-cell">PSP 可逆</div><div class="tt-cell" style="flex:1.5">换 PSP 即失效</div><div class="tt-cell">单 PSP</div></div>
+    <div class="tt-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot amber-dot"></span><b>Merchant Token</b><br><small>自建 Vault 发</small></div><div class="tt-cell">✅</div><div class="tt-cell">经 Vault 可逆</div><div class="tt-cell" style="flex:1.5">跨 PSP 路由</div><div class="tt-cell">多 PSP 编排</div></div>
+    <div class="tt-row highlight-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot green-dot"></span><b>Network Token</b><br><small>卡组织发 ⭐</small></div><div class="tt-cell">✅✅</div><div class="tt-cell">不可逆</div><div class="tt-cell" style="flex:1.5"><b class="green-text">授权率 +2~5%</b><br>卡过期自动更新</div><div class="tt-cell"><b class="green-text">订阅/复购</b></div></div>
+    <div class="tt-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot indigo-dot"></span><b>Payment Method ID</b><br><small>用户级绑定</small></div><div class="tt-cell">❌</div><div class="tt-cell">不可逆</div><div class="tt-cell" style="flex:1.5">绑定用户级</div><div class="tt-cell">用户钱包</div></div>
+  </div>
+</div>
+<div class="callout-bar blue-callout-bar">💡 核心洞察：Network Token 不只是安全工具，是业务增长引擎 — 授权率↑、churn↓、生命周期管理</div>
+</div>
+</div>
+<div class="slide" id="s7" style="display:none">
+<div class="slide-head"><span class="sh-num">08</span><span class="sh-title">Card Vault 选型</span></div>
+<div class="slide-body">
+<div class="cards-row">
+  <div class="card card-green" style="flex:1">
+    <div class="card-tag green-tag">方案一：PSP Vault</div>
+    <div class="vault-diagram"><span class="vd-box">商户</span><span class="vd-arrow">→</span><span class="vd-box vd-filled">PSP Vault</span></div>
+    <div class="card-line" style="font-weight:700;color:#059669">成本最低</div>
+    <div class="card-line">跨 PSP：❌</div>
+    <div class="card-line">锁定单 PSP</div>
+    <div class="card-ok">✅ 单 PSP 场景</div>
+  </div>
+  <div class="card card-amber" style="flex:1">
+    <div class="card-tag amber-tag">方案二：第三方 Vault</div>
+    <div class="vault-diagram"><span class="vd-box">商户</span><span class="vd-arrow">→</span><span class="vd-box vd-filled amber-fill">第三方</span><span class="vd-arrow">→</span><span class="vd-boxs">PSP A<br>PSP B<br>PSP C</span></div>
+    <div class="card-line" style="font-weight:700;color:#d97706">成本中等</div>
+    <div class="card-line">跨 PSP：✅</div>
+    <div class="card-line">Spreedly / VGS / Basis Theory</div>
+    <div class="card-ok">✅ 多 PSP，不自建</div>
+  </div>
+  <div class="card card-red" style="flex:1">
+    <div class="card-tag red-tag">方案三：自建 Vault</div>
+    <div class="vault-diagram"><span class="vd-box">商户</span><span class="vd-arrow">→</span><span class="vd-box vd-filled red-fill">自建<br><small>+ HSM</small></span><span class="vd-arrow">→</span><span class="vd-boxs">PSP A<br>PSP B<br>PSP C</span></div>
+    <div class="card-line" style="font-weight:700;color:#dc2626">成本最高</div>
+    <div class="card-line">跨 PSP：✅ + 完全控制</div>
+    <div class="card-line">HSM/KMS/双人控制/渗透</div>
+    <div class="card-ok">✅ 大体量 + 强控制权</div>
+  </div>
+</div>
+<div class="col-box" style="margin-top:16px">
+  <div class="col-header blue">多 PSP 场景下独立 Vault 的价值 — "编排"</div>
+  <div class="cards-row">
+    <div class="mini-card blue-mini"><div class="mc-title">💰 成本路由</div><div class="mc-desc">BIN 级别智能分发</div></div>
+    <div class="mini-card green-mini"><div class="mc-title">📈 授权率路由</div><div class="mc-desc">卡类型级别优化</div></div>
+    <div class="mini-card red-mini"><div class="mc-title">🔄 容灾切换</div><div class="mc-desc">秒级故障转移</div></div>
+    <div class="mini-card amber-mini"><div class="mc-title">🃏 卡类型路由</div><div class="mc-desc">Visa → PSP A</div></div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s8" style="display:none">
+<div class="slide-head"><span class="sh-num">09</span><span class="sh-title">密钥管理 · 分层加密模型</span></div>
+<div class="slide-body">
+<div class="two-col">
+  <div class="col-box">
+    <div class="col-header blue">信封加密 (Envelope Encryption)</div>
+    <div class="envelope-stack">
+      <div class="env-layer red-layer">💳 PAN 明文数据<div class="env-note">4111 1111 1111 1111</div><div class="env-arrow-label">← 用 DEK 加密</div></div>
+      <div class="env-arrow">↓</div>
+      <div class="env-layer amber-layer">🔑 DEK (Data Encryption Key)<div class="env-note">加密 PAN 的密钥，存在 DB（被 KEK 包过）</div><div class="env-arrow-label">← 用 KEK 加密</div></div>
+      <div class="env-arrow">↓</div>
+      <div class="env-layer blue-layer">🔐 KEK (Key Encryption Key)<div class="env-note">在 KMS/HSM 中，密钥与密文分离</div></div>
+      <div class="env-arrow">↓</div>
+      <div class="env-layer dark-layer">🏛️ Master Key · HSM 硬件保护 · 永不出设备</div>
+    </div>
+  </div>
+  <div>
+    <div class="col-box" style="margin-bottom:12px">
+      <div class="col-header purple">密钥生命周期</div>
+      <div class="col-item">1. 生成 → 2. 分发 → 3. 使用</div>
+      <div class="col-item">4. 存储 → 5. 轮换 → 6. 吊销</div>
+      <div class="col-item">7. 销毁</div>
+      <div class="callout-box red-callout" style="margin-top:8px">v4.0 要求定期轮换 · 淘汰弱算法/早期 TLS</div>
+    </div>
+    <div class="col-box">
+      <div class="col-header red">常见翻车 ❌</div>
+      <div class="col-item"><span class="x-mark">✗</span> 密钥硬编码进代码</div>
+      <div class="col-item"><span class="x-mark">✗</span> 密钥和密文同库存储</div>
+      <div class="col-item"><span class="x-mark">✗</span> 生产密钥拷到测试环境</div>
+      <div class="col-item"><span class="x-mark">✗</span> 邮件/IM 发送密钥</div>
+      <div class="col-sub" style="margin-top:4px;color:#94a3b8">任一条被 QSA 看到 → 重大不符合风险</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s9" style="display:none">
+<div class="slide-head"><span class="sh-num">10</span><span class="sh-title">前端支付页安全 · Magecart</span></div>
+<div class="slide-body">
+<div class="two-col">
+  <div>
+    <div class="col-box" style="margin-bottom:12px">
+      <div class="col-header red">⚠ Magecart 攻击链</div>
+      <div class="attack-flow">
+        <div class="af-step">CDN 被篡改<br><small>或广告/埋点 SDK</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="af-step">注入恶意 JS<br><small>22 行代码</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="af-step">窃取表单数据<br><small>PAN + CVV + 姓名</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="af-step">外传到攻击者<br><small>22 天未发现</small></div>
+      </div>
+      <div class="case-box">
+        <div class="case-title">🇬🇧 英航案例 (2018)</div>
+        <div class="case-text">22 行恶意代码 → CDN 篡改 → 22 天 → 约 38 万交易受影响</div>
+        <div class="case-sub">ICO 拟罚 1.83 亿英镑，最终罚款 2000 万英镑</div>
+        <div class="case-sub">Magecart 不管你服务器安不安全，它直接在浏览器里偷</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="col-box" style="margin-bottom:12px">
+      <div class="col-header amber">风险来源</div>
+      <div class="col-item"><span class="dot amber-dot"></span> 广告脚本 (Ad Tech)</div>
+      <div class="col-item"><span class="dot amber-dot"></span> 埋点 / 分析 SDK</div>
+      <div class="col-item"><span class="dot amber-dot"></span> 客服浮窗 (Chat Widget)</div>
+      <div class="col-item"><span class="dot amber-dot"></span> A/B 测试工具</div>
+      <div class="col-item"><span class="dot amber-dot"></span> CDN 篡改</div>
+      <div class="col-item"><span class="dot amber-dot"></span> 第三方 npm 包</div>
+    </div>
+  </div>
+</div>
+<div class="col-box">
+  <div class="col-header green">防御控制措施 · v4.0 要求 6.4.3 / 11.6.1</div>
+  <div class="cards-row">
+    <div class="mini-card green-mini"><div class="mc-title">🛡️ CSP</div><div class="mc-desc">Content-Security-Policy<br>限制脚本来源</div></div>
+    <div class="mini-card green-mini"><div class="mc-title">🔒 SRI</div><div class="mc-desc">Subresource Integrity<br>脚本完整性校验</div></div>
+    <div class="mini-card green-mini"><div class="mc-title">📋 脚本白名单</div><div class="mc-desc">Inventory + Authorization<br>每个脚本有清单有授权</div></div>
+    <div class="mini-card green-mini"><div class="mc-title">📊 篡改检测</div><div class="mc-desc">完整性监控 + 告警<br>脚本或页面变更通知</div></div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s10" style="display:none">
+<div class="slide-head"><span class="sh-num">11</span><span class="sh-title">数据治理 · 卡数据副本追踪</span></div>
+<div class="slide-body">
+<div class="col-box" style="margin-bottom:12px">
+  <div class="center-source">💳 CDE 卡数据<div class="cs-sub">受控存储点</div></div>
+  <div class="radial-items">
+    <div class="ri-box red-ri" style="top:0;left:5%"><b>📝 ELK / 日志</b><br>错误日志打了完整 PAN<br><small>→ 整个集群进 CDE</small></div>
+    <div class="ri-box red-ri" style="top:0;right:5%"><b>📊 APM / Trace</b><br>采了请求体含卡号<br><small>→ APM 进 CDE</small></div>
+    <div class="ri-box red-ri" style="bottom:0;left:5%"><b>🎧 客服后台</b><br>截图里有卡号<br><small>→ 客服系统进 CDE</small></div>
+    <div class="ri-box amber-ri" style="bottom:0;right:5%"><b>📈 BI / 数仓</b><br>同步了未脱敏数据<br><small>→ 数仓进 CDE</small></div>
+    <div class="ri-box amber-ri" style="top:40%;left:0"><b>🧪 测试环境</b><br>用了真实卡号<br><small>→ 重大不符合风险</small></div>
+  </div>
+</div>
+<div class="col-box">
+  <div class="col-header green">治理规则 · v4.0 要求</div>
+  <div class="col-item"><b>日志：</b>全链路不记录 PAN/CVV，正则脱敏，权限 + 留存周期</div>
+  <div class="col-item"><b>客服：</b>只展示后四位 + 卡品牌，全量审计，权限拆分</div>
+  <div class="col-item"><b>BI：</b>PAN → token/hash，CVV 不进，BIN 可进</div>
+  <div class="col-item"><b>AI 风控：</b>用 BIN/token/PSP 风控分/合成数据</div>
+</div>
+</div>
+</div>
+<div class="slide" id="s11" style="display:none">
+<div class="slide-head"><span class="sh-num">12</span><span class="sh-title">研发与测试 · 安全门禁</span></div>
+<div class="slide-body">
+<div class="col-box" style="margin-bottom:16px">
+  <div class="col-header blue">安全开发生命周期</div>
+  <div class="pipeline">
+    <div class="pl-stage blue-pl"><div class="pl-icon">💻</div><div class="pl-name">编码</div><div class="pl-desc">密钥不进 Git<br>Secrets Manager</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="pl-stage purple-pl"><div class="pl-icon">🔍</div><div class="pl-name">SAST</div><div class="pl-desc">静态代码扫描<br>+ SCA 依赖检查</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="pl-stage amber-pl"><div class="pl-icon">🔨</div><div class="pl-name">构建</div><div class="pl-desc">变更控制流程<br>CDE 影响须审批</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="pl-stage red-pl"><div class="pl-icon">🎯</div><div class="pl-name">DAST</div><div class="pl-desc">动态安全测试<br>ASV 扫描</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="pl-stage green-pl"><div class="pl-icon">🚀</div><div class="pl-name">部署</div><div class="pl-desc">渗透测试<br>完整性检测</div></div>
+  </div>
+  <div class="env-box">三环境隔离：Dev · Staging · Prod</div>
+</div>
+<div class="col-box">
+  <div class="col-header red">🚫 红线 · 重大不符合风险</div>
+  <div class="cards-row">
+    <div class="card card-red" style="flex:1;text-align:center">
+      <div style="font-size:24px;margin-bottom:8px">🔴</div>
+      <div style="font-size:16px;font-weight:700;color:#dc2626">测试环境用真实卡号</div>
+      <div style="font-size:13px;color:#b91c1c;margin-top:4px">原则上禁止，需按 CDE 纳管</div>
+      <div style="font-size:12px;color:#64748b;margin-top:4px">→ 用 PSP 测试卡或脱敏仿真数据</div>
+    </div>
+    <div class="card card-red" style="flex:1;text-align:center">
+      <div style="font-size:24px;margin-bottom:8px">🔴</div>
+      <div style="font-size:16px;font-weight:700;color:#dc2626">密钥进 Git 仓库</div>
+      <div style="font-size:13px;color:#b91c1c;margin-top:4px">进了就泄露，必须立即轮换</div>
+      <div style="font-size:12px;color:#64748b;margin-top:4px">→ Secrets Manager + git-secrets</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s12" style="display:none">
+<div class="slide-head"><span class="sh-num">13</span><span class="sh-title">事件响应 · 关键动作</span></div>
+<div class="slide-body">
+<div class="two-col">
+  <div class="col-box">
+    <div class="col-header blue">事件严重等级与响应</div>
+    <div class="incident-card red-border"><div class="ic-sev">🔴</div><div class="ic-title">PAN 泄露</div><div class="ic-desc">按 PSP / 收单行 / 卡组织规则通知</div><div class="ic-sub">内部按 24h 目标演练</div></div>
+    <div class="incident-card deep-red-border"><div class="ic-sev">🔴🔴</div><div class="ic-title">CVV 被记录（更严重！）</div><div class="ic-desc">存储 CVV 本身就是 PCI 禁止的</div><div class="ic-sub">立即删 + 全面排查 — 没有"意外"说法</div></div>
+    <div class="incident-card amber-border"><div class="ic-sev">🟠</div><div class="ic-title">密钥泄露</div><div class="ic-desc">立即轮换 + 重加密 + 等同 PAN 泄露处置</div></div>
+    <div class="incident-card yellow-border"><div class="ic-sev">🟡</div><div class="ic-title">支付页 JS 篡改</div><div class="ic-desc">下线 → 取证 → 清理 → 加强 CSP/SRI → 重新上线</div></div>
+    <div class="sev-bar"><div class="sv red-sv">紧急</div><div class="sv amber-sv">高</div><div class="sv yellow-sv">中</div><div class="sv green-sv">低</div></div>
+  </div>
+  <div>
+    <div class="col-box" style="margin-bottom:12px">
+      <div class="col-header purple">v4.0 要求</div>
+      <div class="col-item"><span class="dot purple-dot"></span> 事件响应计划每年演练</div>
+      <div class="col-item"><span class="dot purple-dot"></span> 桌面推演或实战均可</div>
+      <div class="col-item"><span class="dot purple-dot"></span> 关键人 24/7 联系得上</div>
+      <div class="col-item"><span class="dot purple-dot"></span> 复盘报告保留三年</div>
+      <div class="col-item"><span class="dot purple-dot"></span> 不能只写 plan 不演练</div>
+    </div>
+    <div class="col-box">
+      <div class="col-header green">响应时间线</div>
+      <div class="tl-list">
+        <div class="tll-item"><span class="tll-time red-text">T+0h</span> 发现事件，启动响应</div>
+        <div class="tll-item"><span class="tll-time red-text">T+4h</span> 初步取证，确定影响范围</div>
+        <div class="tll-item"><span class="tll-time red-text">T+24h</span> 完成必要通知</div>
+        <div class="tll-item"><span class="tll-time red-text">T+72h</span> 详细报告提交</div>
+        <div class="tll-item"><span class="tll-time red-text">T+30d</span> 根因 + 整改 + 复盘</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="slide" id="s13" style="display:none">
+<div class="slide-head"><span class="sh-num">14</span><span class="sh-title">培训主线 · 收尾</span></div>
+<div class="slide-body">
+<div class="hero-title" style="font-size:28px">从合规负担到业务收益</div>
+<div class="hero-sub" style="margin-bottom:28px">PCI DSS 不只是把卡数据暴露面降到最小，更是把合规成本<b>转化</b>为业务收益</div>
+<div class="cards-row">
+  <div class="card card-blue" style="text-align:center"><div style="font-size:32px">📈</div><div class="card-title" style="margin-top:8px">授权率提升</div><div class="card-desc">Network Token +2~5%</div></div>
+  <div class="card card-teal" style="text-align:center"><div style="font-size:32px">🔄</div><div class="card-title" style="margin-top:8px">Churn 降低</div><div class="card-desc">卡过期自动更新</div></div>
+  <div class="card card-amber" style="text-align:center"><div style="font-size:32px">🛡️</div><div class="card-title" style="margin-top:8px">多 PSP 容灾</div><div class="card-desc">Token 编排 + 路由</div></div>
+  <div class="card card-purple" style="text-align:center"><div style="font-size:32px">🏢</div><div class="card-title" style="margin-top:8px">商户规模化</div><div class="card-desc">PayFac + Click to Pay</div></div>
+</div>
+<div class="flow-bar" style="margin-top:28px">
+  <div class="fb-item blue-fb"><div class="fb-title">合规判断</div><div class="fb-sub">要求是什么</div></div>
+  <span class="flow-arrow">→</span>
+  <div class="fb-item teal-fb"><div class="fb-title">产品落地</div><div class="fb-sub">怎么设计降成本</div></div>
+  <span class="flow-arrow">→</span>
+  <div class="fb-item amber-fb"><div class="fb-title">技术架构</div><div class="fb-sub">怎么落地</div></div>
+  <span class="flow-arrow">→</span>
+  <div class="fb-item red-fb"><div class="fb-title">运营审计</div><div class="fb-sub">怎么证明做到了</div></div>
+</div>
+</div>
+</div>
+</div>
+<button class="arr ar" id="ar" onclick="go(1)">›</button>
+</div>
+<div class="np" id="np"><div class="ni">
+<h3>演讲词</h3>
+<div class="nt" id="nt"></div>
+<div class="nm" id="nm"></div>
+<div class="nd" id="nd"></div>
+</div></div>
+</div>
+<div class="mo" id="mo"><div style="text-align:center">
+<div class="mt" id="mot"></div><div class="mh" id="moh"></div></div></div>
+<div class="kh">← → 翻页 · N 演讲词 · F 全屏</div>
+<script>
+var NOTES=[{"t": "01 · 目录 · 四大模块", "m": "1 分钟", "d": "今天把 PCI DSS 翻译成产品、架构、运营能听懂的语言。\n\n四模块走完回答三件事：\n1. 公司在 Scope 里吗？\n2. 选型压最小 PCI 成本了吗？\n3. 出事怎么兜底？\n\n逻辑链：合规判断→产品落地→技术架构→运营审计。走完这四步，PCI 就不是年底突击，是日常节奏。"}, {"t": "02 · 定位与边界", "m": "3 分钟", "d": "PCI 的核心判断是：**哪些系统存储、处理、传输卡数据，或能影响 CDE 安全**。\n\n你公司有 200 个微服务，可能只有少数直接处理卡数据；但日志、CI/CD、跳板机这类能影响 CDE 的系统也要纳入评估。\n\n**PCI 本质是架构决策**，不是安全团队的活。Hosted Page 还是 Direct API，产品定下来那一刻，未来三年的合规成本就定了。\n\nv4.0 的变化——以前 Q4 突击三个月能过，现在要求持续监控、持续评估。年度 snapshot 时代结束了。"}, {"t": "03 · 认证等级与验证方式", "m": "4 分钟", "d": "SAQ 类型由**产品形态决定**，不是安全团队选的。\n\n商户等级按年交易量划分：\n- Level 1：>600 万笔，必须 ROC + QSA\n- Level 2：100~600 万笔\n- Level 3：20~100 万笔\n- Level 4：<20 万笔，填 SAQ 即可\n\n四种 SAQ 对应四种接入：\n- Hosted Page → SAQ A\n- iframe / Elements → SAQ A-EP（甜点区）\n- 自有支付系统 → SAQ C\n- Direct API → SAQ D（300+ 问题）\n\n让商户从 D 降到 A-EP，合规工作量少 80%。"}, {"t": "04 · PCI Scope", "m": "4 分钟", "d": "同心圆：CDE 核心 → Scope 边界 → 风险盲区。\n\n盲区才是地雷：\n- ELK 一条日志打 PAN → 整个集群进 CDE\n- APM 采了请求体 → APM 进 CDE\n- 客服截图含卡号 → 客服系统进 CDE\n- 测试环境用真实卡号 → 重大不符合风险\n- BI 同步未脱敏数据 → 数仓进 CDE\n\n降 Scope 七件套：能不碰就不碰，碰了就脱敏，脱敏不了就隔离，隔离不了就加密。\n\n铁律：**授权后 CVV 永远不存**。"}, {"t": "05 · 支付产品形态", "m": "4 分钟", "d": "产品决策指南：\n\n**Hosted Payment Page**：SAQ A，Scope 最小，跳转伤转化率。\n\n**Embedded / Elements**：SAQ A-EP，甜点区——体验好，合规也轻。大多数商户的最佳选择。\n\n**Direct API**：SAQ D，300+ 问题，合规成本最高。除非有强理由，否则别碰。\n\n**PayFac 模式**：平台做 Master Merchant，但平台要扛 PCI Level 1。\n\n**Click to Pay / Passkey**：卡数据主要留在卡组织或用户设备侧，商户侧卡数据暴露面极低。未来方向。"}, {"t": "06 · CIT / MIT", "m": "3 分钟", "d": "CIT（买家在场）：首笔支付、注册绑卡。通常需 3DS/SCA 或满足豁免，并建立后续 MIT 的授权凭证。\nMIT（商户发起）：订阅续费、分期扣款、免密扣款。必须带首次 CIT 的凭证。\n\n判断标准：**首次 CIT 完成强认证或合规豁免，后续 MIT 带凭证**。\n\n订阅生命周期：CIT + 认证/豁免 → 存 Token → MIT 续费 → 扣款失败重试 → 卡过期用 Network Token 自动更新。\n\nNetwork Token 能解 involuntary churn。"}, {"t": "07 · Tokenization", "m": "4 分钟", "d": "四种 Token：\n\n**PSP Token**：锁定单 PSP，换 PSP 即失效。\n\n**Merchant Token**：自建 Vault，跨 PSP，合规成本高。\n\n**Network Token**（重点）：卡组织发，通常更利于生命周期管理和跨 PSP 策略，泄露后的可用性显著降低。**业务增长引擎**：授权率常见 +2~5%，卡过期自动更新。\n\n**Payment Method ID**：用户级绑定，适合钱包。\n\n核心洞察：Network Token 是业务增长引擎，不只是安全工具。"}, {"t": "08 · Card Vault 选型", "m": "4 分钟", "d": "三种方案：\n\n**PSP Vault**：成本最低，锁定单 PSP。单 PSP 就用这个。\n\n**第三方 Vault**：Spreedly / VGS / Basis Theory，成本中等，跨 PSP。选之前看对方 AOC。\n\n**自建 Vault**：成本最高，HSM / KMS / 双人控制，控制权最强。\n\n独立 Vault 核心价值——**编排**：\n- 成本路由（BIN 级别智能分发）\n- 授权率路由（卡类型级别优化）\n- 容灾切换（秒级故障转移）\n- 卡类型路由（Visa → PSP A，UnionPay → PSP B）"}, {"t": "09 · 密钥管理", "m": "4 分钟", "d": "常见翻车：\n- 密钥硬编码进代码\n- 密钥和密文同库\n- 生产密钥拷到测试环境\n- 邮件 / IM 发送密钥\n\n任一条被 QSA 看到 → 重大不符合风险。\n\n信封加密模型：Master Key（HSM，永不出设备）→ KEK（KMS）→ DEK（加密 PAN）→ PAN 明文。\n\n即使拖库，攻击者拿到的也是密文 + 被 KEK 包过的 DEK，没 KEK 解不开。\n\nv4.0 要求定期轮换，并淘汰早期 TLS、RSA-1024、3DES 和不合规使用 SHA-1 的场景。"}, {"t": "10 · 前端支付页安全", "m": "4 分钟", "d": "Magecart 直接在浏览器里偷。\n\n英航案例：2018 年，22 行恶意代码，CDN 被篡改，22 天未发现，约 38 万交易受影响；ICO 拟罚 1.83 亿英镑，最终罚款 2000 万英镑。\n\n风险来源：广告脚本、埋点 SDK、客服浮窗、A/B 测试工具、CDN、第三方 npm 包。\n\n防御（v4.0 6.4.3 / 11.6.1）：\n- **CSP**：限制脚本来源\n- **SRI**：脚本完整性校验\n- **脚本白名单**\n- **支付页篡改检测**：脚本或页面变了立即通知"}, {"t": "11 · 数据治理", "m": "4 分钟", "d": "核心问题：**卡数据除了 CDE 里那份，其他副本在哪？**\n\n五个方向：ELK / 日志、APM / Trace、客服后台、BI / 数仓、测试环境。\n\n治理规则：\n- 日志：全链路不记录 PAN / CVV\n- 客服：只展示后四位 + 卡品牌\n- BI：PAN → token / hash，CVV 不进\n- AI 风控：BIN 代 PAN、合成数据训练\n\nv4.0 把建议变成要求。"}, {"t": "12 · 研发与测试", "m": "3 分钟", "d": "安全开发生命周期：编码 → SAST → 构建 → DAST → 部署。\n\n三环境隔离：Dev、Staging、Prod。\n\n两条红线（重大不符合风险）：\n\n**测试环境用真实卡号** → 原则上禁止，除非按 CDE 等级纳管。\n\n**密钥进 Git 仓库** → 进了就泄露，必须立即轮换。用 Secrets Manager + git-secrets。"}, {"t": "13 · 事件响应", "m": "4 分钟", "d": "四个严重等级：\n\n**PAN 泄露**：按 PSP / 收单行 / 卡组织规则通知，内部按 24h 目标演练。\n\n**CVV 被记录**：比 PAN 泄露更严重。立即删、全面排查。\n\n**密钥泄露**：等同 PAN 泄露。立即轮换、重加密。\n\n**JS 篡改**：下线 → 取证 → 清理 → 加强 CSP/SRI → 重新上线。\n\n时间线：T+0 启动 → T+4 取证 → T+24 完成必要通知 → T+72 报告 → T+30 复盘。"}, {"t": "14 · 收尾", "m": "2 分钟", "d": "PCI 转业务收益：\n- **Network Token** 提授权率 2~5%\n- **卡过期自动更新**降 churn\n- **Token 编排**撑多 PSP 容灾\n- **PayFac + Click to Pay** 撑规模化和体验优化\n\n四模块逻辑链：合规判断 → 产品落地 → 技术架构 → 运营审计。\n\n走完这四步，PCI 就不是年底突击，是日常节奏。谢谢大家。"}];
+var MMAP={"模块一": ["MODULE 1", "合规判断"], "模块二": ["MODULE 2", "产品落地"], "模块三": ["MODULE 3", "技术架构"], "模块四": ["MODULE 4", "运营审计"]};
+var cur=0,no=false,ot=null;
+var ss=document.querySelectorAll(".slide"),tot=ss.length;
+function render(){
+  for(var i=0;i<tot;i++)ss[i].style.display=(i===cur)?"block":"none";
+  var n=NOTES[cur];
+  document.getElementById("nt").textContent=n.t;
+  document.getElementById("nm").textContent="预计时长："+n.m;
+  document.getElementById("nd").innerHTML=n.d.replace(/\*\*(.*?)\*\*/g,"<b>$1</b>").replace(/\n/g,"<br>");
+  document.getElementById("cnt").textContent=(cur+1)+" / "+tot;
+  document.getElementById("pb").style.width=((cur+1)/tot*100)+"%";
+  document.getElementById("bp").disabled=(cur===0);
+  document.getElementById("bn").disabled=(cur===tot-1);
+  document.getElementById("al").disabled=(cur===0);
+  document.getElementById("ar").disabled=(cur===tot-1);
+  var m=ss[cur].getAttribute("data-mod");
+  if(m&&MMAP[m])showMod(MMAP[m][0],MMAP[m][1]);
+}
+function showMod(t,s){
+  document.getElementById("mot").textContent=t;
+  document.getElementById("moh").textContent=s;
+  var o=document.getElementById("mo");o.classList.add("show");
+  clearTimeout(ot);ot=setTimeout(function(){o.classList.remove("show")},1600);
+}
+function go(d){var n=cur+d;if(n>=0&&n<tot){cur=n;render();}}
+function tn(){no=!no;document.getElementById("np").classList.toggle("open",no);document.getElementById("bno").classList.toggle("on",no);}
+function fs(){if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(function(){});else document.exitFullscreen();}
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();go(-1);}
+  else if(e.key==="ArrowRight"||e.key==="ArrowDown"||e.key===" "){e.preventDefault();go(1);}
+  else if(e.key==="n"||e.key==="N")tn();
+  else if(e.key==="f"||e.key==="F")fs();
+  else if(e.key==="Escape")document.getElementById("mo").classList.remove("show");
+});
+var tx=0;
+document.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;});
+document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?1:-1);});
+document.getElementById("mo").addEventListener("click",function(){this.classList.remove("show");});
+render();
+</script>
+</body></html>
