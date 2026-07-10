@@ -22,7 +22,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 .pbar{height:100%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);transition:width .35s}
 .main{flex:1;display:flex;overflow:hidden}
 .sa{flex:1;display:flex;align-items:center;justify-content:center;padding:12px 56px;position:relative;background:radial-gradient(ellipse at 50% 40%,#131c2e,#0c1222 70%)}
-.sw{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.sw{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform-origin:center top;transition:transform .2s}
 .slide{width:100%;display:flex;flex-direction:column;align-items:center}
 .slide svg{max-width:100%;max-height:calc(100vh - 80px);display:block;border-radius:8px;box-shadow:0 2px 20px rgba(0,0,0,.5)}
 .stag{font-size:11px;color:#475569;margin-bottom:6px;display:flex;align-items:center;gap:6px}
@@ -55,6 +55,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 <button id="bp" onclick="go(-1)">◀</button>
 <button id="bn" onclick="go(1)">▶</button>
 <button id="bno" onclick="tn()">📝</button>
+<button onclick="zoom(-1)">➖</button><span class="cnt" id="zpct">100%</span><button onclick="zoom(1)">➕</button>
 <button onclick="fs()">⛶</button></div></div>
 <div class="prog"><div class="pbar" id="pb"></div></div>
 <div class="main">
@@ -1304,6 +1305,17 @@ var tx=0;
 document.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;});
 document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?1:-1);});
 document.getElementById("mo").addEventListener("click",function(){this.classList.remove("show");});
+var zoomLevel=1;
+function zoom(d){
+  zoomLevel=Math.min(2,Math.max(0.5,zoomLevel+d*0.1));
+  document.querySelector(".sw").style.transform="scale("+zoomLevel+")";
+  document.getElementById("zpct").textContent=Math.round(zoomLevel*100)+"%";
+}
+document.addEventListener("keydown",function(e){
+  if(e.key==="+"||e.key==="="){e.preventDefault();zoom(1);}
+  else if(e.key==="-"||e.key==="_"){e.preventDefault();zoom(-1);}
+  else if(e.key==="0"){e.preventDefault();zoomLevel=1;document.querySelector(".sw").style.transform="scale(1)";document.getElementById("zpct").textContent="100%";}
+});
 render();
 </script>
 </body></html>
