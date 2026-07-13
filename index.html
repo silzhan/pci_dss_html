@@ -21,7 +21,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 .prog{height:2px;background:rgba(255,255,255,.03);flex-shrink:0}
 .pbar{height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);transition:width .35s}
 .main{flex:1;display:flex;overflow:hidden}
-.sa{flex:1;display:flex;align-items:center;justify-content:center;padding:16px 48px;position:relative;background:#1a1f2e;overflow-y:auto}
+.sa{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:12px 48px 20px;position:relative;background:#1a1f2e;overflow-y:auto}
 .sw{width:100%;max-width:1000px;margin:0 auto;transform-origin:center top;transition:transform .2s}
 .slide{width:100%}
 .slide-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -254,6 +254,62 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 .kh{position:fixed;bottom:8px;right:14px;font-size:9px;color:#1e293b}
 .kh kbd{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:0 3px;border-radius:2px;font-family:inherit}
 
+body.light{background:#f4f7fb;color:#0f172a}
+body.light .bar{background:#ffffff;border-bottom:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+body.light .bl h1,body.light .sh-title,body.light .hero-title,body.light .card-title,body.light .tl-label,body.light .fb-title{color:#0f172a}
+body.light .br button{border-color:#dbe3ef;color:#475569;background:#ffffff}
+body.light .br button:hover,body.light .br button.on{background:#eef4ff;color:#1d4ed8;border-color:#bfdbfe}
+body.light .cnt,body.light .card-num{color:#64748b}
+body.light .prog{background:#e2e8f0}
+body.light .sa{background:linear-gradient(180deg,#f8fafc,#eef2f7)}
+body.light .slide-body,body.light .card-line,body.light .col-item,body.light .tt-row,body.light .sl-item,body.light .ic-desc,body.light .tll-item{color:#334155}
+body.light .hero-sub,body.light .card-desc,body.light .card-q,body.light .col-sub,body.light .tl-sub,body.light .mc-desc,body.light .env-note,body.light .ic-sub,body.light .fb-sub{color:#64748b}
+body.light .card,body.light .col-box,body.light .mini-card{background:#ffffff;border-color:#e2e8f0;box-shadow:0 8px 24px rgba(15,23,42,.07)}
+body.light .flow-bar,body.light .env-box{background:#ffffff;border:1px solid #e2e8f0;color:#475569}
+body.light .col-header.blue{background:#dbeafe;color:#1d4ed8}
+body.light .col-header.red{background:#fee2e2;color:#b91c1c}
+body.light .col-header.green{background:#dcfce7;color:#047857}
+body.light .col-header.purple{background:#ede9fe;color:#6d28d9}
+body.light .col-header.amber{background:#fef3c7;color:#b45309}
+body.light .tt-header{background:#e2e8f0;color:#475569}
+body.light .tt-row{border-bottom-color:#e2e8f0}
+body.light .highlight-row{background:#ecfdf5;border-color:#bbf7d0}
+body.light .np{background:#ffffff;border-left-color:#e2e8f0}
+body.light .ni h3,body.light .ni .nm{color:#64748b}
+body.light .ni .nt{color:#0f172a}
+body.light .ni .nd{color:#334155}
+body.light .ni .nd b{color:#2563eb}
+body.light .arr{background:#ffffff;border-color:#e2e8f0;color:#475569;box-shadow:0 6px 18px rgba(15,23,42,.12)}
+body.light .arr:hover{background:#2563eb;color:#fff}
+body.light .mo{background:rgba(248,250,252,.97)}
+body.light .kh{color:#94a3b8}
+body.light ::-webkit-scrollbar-thumb{background:#cbd5e1}
+
+body:not(.light) .theme-svg{background:#0f172a!important}
+body:not(.light) .theme-svg > rect[fill="#f8fafc"]{fill:#0f172a}
+body:not(.light) .theme-svg rect[stroke][fill="#ffffff"],
+body:not(.light) .theme-svg rect[stroke][fill="#f8fbff"],
+body:not(.light) .theme-svg rect[stroke][fill="#fbfffb"],
+body:not(.light) .theme-svg rect[stroke][fill="#fffdf8"],
+body:not(.light) .theme-svg rect[stroke][fill="#f7fbff"],
+body:not(.light) .theme-svg rect[stroke][fill="#fafaff"],
+body:not(.light) .theme-svg rect[stroke][fill="#eef6ff"],
+body:not(.light) .theme-svg rect[stroke][fill="#eef2f7"]{fill:#182235;stroke:#344255}
+body:not(.light) .theme-svg text[fill="#101827"],
+body:not(.light) .theme-svg text[fill="#111827"]{fill:#e5edf8}
+body:not(.light) .theme-svg text[fill="#334155"],
+body:not(.light) .theme-svg text[fill="#475569"],
+body:not(.light) .theme-svg text[fill="#64748b"]{fill:#aab8c8}
+body:not(.light) .theme-svg [stroke="#d9e5f3"],
+body:not(.light) .theme-svg [stroke="#d9d6f3"],
+body:not(.light) .theme-svg [stroke="#d8e2ee"],
+body:not(.light) .theme-svg [stroke="#c9def6"],
+body:not(.light) .theme-svg [stroke="#cbd8e8"],
+body:not(.light) .theme-svg [stroke="#c8dfca"],
+body:not(.light) .theme-svg [stroke="#efd3a5"],
+body:not(.light) .theme-svg [stroke="#e2e8f0"],
+body:not(.light) .theme-svg [stroke="#d5dee8"]{stroke:#344255}
+
 @media(max-width:768px){.two-col{flex-direction:column}.cards-row{flex-direction:column}.radial-items{grid-template-columns:1fr}.sa{padding:12px 16px}}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:3px}
 </style>
@@ -263,7 +319,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 <div class="bar"><div class="bl"><div class="dot">P</div><h1>PCI DSS v4.0</h1></div>
 <div class="br"><span class="cnt" id="cnt">1 / 14</span>
 <button id="bp" onclick="go(-1)">◀</button><button id="bn" onclick="go(1)">▶</button>
-<button id="bno" onclick="tn()">📝</button><button onclick="zoom(-1)">➖</button><span class="cnt" id="zpct">100%</span><button onclick="zoom(1)">➕</button><button onclick="fs()">⛶</button></div></div>
+<button id="bno" onclick="tn()">📝</button><button id="bth" onclick="theme()">☀</button><button onclick="zoom(-1)">➖</button><span class="cnt" id="zpct">100%</span><button onclick="zoom(1)">➕</button><button onclick="fs()">⛶</button></div></div>
 <div class="prog"><div class="pbar" id="pb"></div></div>
 <div class="main">
 <div class="sa">
@@ -333,6 +389,170 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 </div>
 </div>
 </div>
+<div class="slide" id="s1b" style="display:none">
+<div class="slide-head"><span class="sh-num">02B</span><span class="sh-title">支付牌照与 PCI DSS 定位</span></div>
+<div class="slide-body">
+<svg class="theme-svg" viewBox="0 0 1180 990" width="100%" role="img" aria-label="PCI 与支付牌照定位图" style="display:block;background:#f8fafc;border-radius:14px">
+  <defs>
+    <filter id="pcidssSoftShadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#64748b" flood-opacity=".14"/>
+    </filter>
+    <linearGradient id="pcidssBlueTab" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f62bd"/>
+      <stop offset="1" stop-color="#0069d9"/>
+    </linearGradient>
+    <linearGradient id="pcidssGreenHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2f8f3a"/>
+      <stop offset="1" stop-color="#43a047"/>
+    </linearGradient>
+    <marker id="pcidssArrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#5b7894"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="900" fill="#f8fafc"/>
+  <text x="590" y="58" text-anchor="middle" font-size="32" font-weight="900" fill="#101827">PCI 与支付牌照的定位：不需要支付牌照，也能做收单，但没 PCI 不行</text>
+  <text x="590" y="105" text-anchor="middle" font-size="23" font-weight="800" fill="#101827">信用卡收单不需要卡组（如 QSP）的监管牌照</text>
+
+  <g filter="url(#pcidssSoftShadow)">
+    <rect x="22" y="170" width="136" height="482" rx="8" fill="#f8fbff" stroke="#d5dee8"/>
+    <text x="90" y="198" text-anchor="middle" font-size="17" font-weight="800" fill="#111827">卡组（</text>
+    <text x="90" y="225" text-anchor="middle" font-size="15" font-weight="800" fill="#111827">Card Schemes）</text>
+    <line x1="22" y1="245" x2="158" y2="245" stroke="#3b5c78" stroke-width="2"/>
+    <text x="90" y="306" text-anchor="middle" font-size="33" font-weight="900" fill="#123f9f">VISA</text>
+    <circle cx="72" cy="372" r="22" fill="#e91b23" opacity=".95"/>
+    <circle cx="102" cy="372" r="22" fill="#f59e0b" opacity=".95"/>
+    <text x="90" y="420" text-anchor="middle" font-size="18" font-weight="900" fill="#006fcf">AMERICAN</text>
+    <text x="90" y="440" text-anchor="middle" font-size="18" font-weight="900" fill="#006fcf">EXPRESS</text>
+    <rect x="62" y="488" width="18" height="44" rx="3" fill="#0b56a8"/>
+    <rect x="82" y="488" width="18" height="44" rx="3" fill="#d9252a"/>
+    <rect x="102" y="488" width="18" height="44" rx="3" fill="#21a451"/>
+    <text x="90" y="518" text-anchor="middle" font-size="24" font-weight="900" fill="#ffffff">JCB</text>
+    <rect x="54" y="578" width="82" height="38" rx="5" fill="#0b8f8a"/>
+    <rect x="54" y="578" width="40" height="38" rx="5" fill="#d71920"/>
+    <text x="96" y="603" text-anchor="middle" font-size="13" font-weight="900" fill="#fff">UnionPay</text>
+  </g>
+
+  <path d="M158 448 L183 448" stroke="#5b7894" stroke-width="3" marker-end="url(#pcidssArrow)"/>
+  <text x="244" y="250" text-anchor="middle" font-size="18" font-weight="900" fill="#111827">卡组的要求</text>
+  <rect x="184" y="270" width="128" height="238" rx="8" fill="#fbfffb" stroke="#9bd5a7" stroke-dasharray="5 4"/>
+  <text x="248" y="352" text-anchor="middle" font-size="15" font-weight="800" fill="#111827">必须遵守</text>
+  <text x="248" y="384" text-anchor="middle" font-size="18" font-weight="900" fill="#147a32">PCI DSS</text>
+  <circle cx="248" cy="432" r="19" fill="#58bd6d"/>
+  <path d="M237 431 L246 440 L261 422" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="184" y="510" width="128" height="220" rx="8" fill="#fbfffb" stroke="#9bd5a7" stroke-dasharray="5 4"/>
+  <text x="248" y="552" text-anchor="middle" font-size="15" font-weight="900" fill="#111827">不要求收单机构</text>
+  <text x="248" y="582" text-anchor="middle" font-size="15" font-weight="800" fill="#111827">必须持有</text>
+  <text x="248" y="614" text-anchor="middle" font-size="15" font-weight="800" fill="#111827">本地支付牌照</text>
+  <text x="248" y="646" text-anchor="middle" font-size="15" font-weight="800" fill="#111827">（如 QSP 等）</text>
+  <circle cx="248" cy="694" r="19" fill="#58bd6d"/>
+  <path d="M237 693 L246 702 L261 684" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M312 448 L337 448" stroke="#b7c4d0" stroke-width="3" marker-end="url(#pcidssArrow)"/>
+
+  <g filter="url(#pcidssSoftShadow)">
+    <rect x="338" y="170" width="606" height="560" rx="10" fill="#ffffff" stroke="#75a7d8"/>
+    <path d="M442 170 H744 V204 Q744 214 734 214 H452 Q442 214 442 204 Z" fill="url(#pcidssBlueTab)"/>
+    <text x="593" y="199" text-anchor="middle" font-size="18" font-weight="900" fill="#ffffff">收单链路中的角色（示例）</text>
+  </g>
+
+  <g fill="none" stroke="#43657f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M397 312 h52 l12 35 h-75 z"/>
+    <path d="M386 347 q8 18 22 0 q12 18 25 0 q12 18 25 0"/>
+    <path d="M397 350 v42 h52 v-42"/>
+    <path d="M415 392 v-25 h18 v25"/>
+  </g>
+  <g fill="none" stroke="#43657f" stroke-width="3" stroke-linejoin="round">
+    <rect x="515" y="304" width="42" height="76" rx="6" fill="#43657f"/>
+    <rect x="524" y="314" width="24" height="21" rx="2" stroke="#fff"/>
+    <circle cx="526" cy="350" r="2" fill="#fff"/><circle cx="536" cy="350" r="2" fill="#fff"/><circle cx="546" cy="350" r="2" fill="#fff"/>
+    <circle cx="526" cy="362" r="2" fill="#fff"/><circle cx="536" cy="362" r="2" fill="#fff"/><circle cx="546" cy="362" r="2" fill="#fff"/>
+  </g>
+  <g fill="#43657f">
+    <path d="M670 322 l44-25 l44 25 z"/>
+    <rect x="682" y="328" width="12" height="54"/><rect x="708" y="328" width="12" height="54"/><rect x="734" y="328" width="12" height="54"/>
+    <rect x="672" y="386" width="84" height="9" rx="2"/>
+  </g>
+  <g fill="none" stroke="#43657f" stroke-width="3">
+    <circle cx="865" cy="346" r="42"/>
+    <ellipse cx="865" cy="346" rx="18" ry="42"/>
+    <path d="M823 346 h84 M832 322 q33 10 66 0 M832 370 q33-10 66 0"/>
+  </g>
+
+  <g stroke="#43657f" stroke-width="3" marker-end="url(#pcidssArrow)">
+    <line x1="462" y1="346" x2="500" y2="346"/><line x1="565" y1="346" x2="650" y2="346"/><line x1="765" y1="346" x2="815" y2="346"/>
+  </g>
+  <g stroke="#9eb0bf" stroke-width="2" stroke-dasharray="6 6">
+    <line x1="423" y1="514" x2="423" y2="594"/><line x1="536" y1="514" x2="536" y2="594"/>
+    <line x1="716" y1="514" x2="716" y2="594"/><line x1="865" y1="514" x2="865" y2="594"/>
+  </g>
+
+  <text x="423" y="430" text-anchor="middle" font-size="17" font-weight="900" fill="#111827">商户</text>
+  <text x="423" y="456" text-anchor="middle" font-size="15" font-weight="700" fill="#111827">（Merchant）</text>
+  <text x="536" y="430" text-anchor="middle" font-size="17" font-weight="900" fill="#111827">收单机构</text>
+  <text x="536" y="456" text-anchor="middle" font-size="15" font-weight="700" fill="#111827">（Acquirer）</text>
+  <text x="536" y="496" text-anchor="middle" font-size="14" fill="#111827">与商户签约，</text>
+  <text x="536" y="520" text-anchor="middle" font-size="14" fill="#111827">提供收单服务</text>
+  <text x="716" y="430" text-anchor="middle" font-size="17" font-weight="900" fill="#111827">收单处理方</text>
+  <text x="716" y="456" text-anchor="middle" font-size="15" font-weight="700" fill="#111827">（Acquiring Processor）</text>
+  <text x="716" y="496" text-anchor="middle" font-size="14" fill="#111827">处理交易报文、</text>
+  <text x="716" y="520" text-anchor="middle" font-size="14" fill="#111827">清算、对账等</text>
+  <text x="865" y="430" text-anchor="middle" font-size="17" font-weight="900" fill="#111827">卡组网络</text>
+  <text x="865" y="456" text-anchor="middle" font-size="15" font-weight="700" fill="#111827">（Network）</text>
+  <text x="865" y="496" text-anchor="middle" font-size="14" fill="#111827">VISA / Mastercard /</text>
+  <text x="865" y="520" text-anchor="middle" font-size="14" fill="#111827">Amex / JCB / UnionPay</text>
+
+  <rect x="360" y="616" width="560" height="108" rx="8" fill="#f7fbff" stroke="#8dc5ff" stroke-dasharray="6 4"/>
+  <circle cx="500" cy="662" r="21" fill="#1266c3"/>
+  <path d="M489 661 L498 671 L514 650" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="610" y="666" text-anchor="middle" font-size="20" font-weight="900" fill="#145a9c">PCI DSS 合规是硬性要求</text>
+  <text x="640" y="698" text-anchor="middle" font-size="15" fill="#111827">（所有接触、处理、存储持卡人数据的环节都必须合规）</text>
+
+  <g filter="url(#pcidssSoftShadow)">
+    <rect x="964" y="170" width="192" height="44" rx="10" fill="url(#pcidssGreenHead)"/>
+    <text x="1060" y="199" text-anchor="middle" font-size="18" font-weight="900" fill="#fff">是否需要支付牌照？</text>
+    <rect x="966" y="234" width="188" height="230" rx="8" fill="#f8fff8" stroke="#a6d7aa"/>
+    <circle cx="992" cy="271" r="12" fill="#78c68b"/><path d="M986 270 l5 6 l10-13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <text x="1022" y="280" font-size="18" font-weight="900" fill="#147a32">可以不需要</text>
+    <text x="1022" y="312" font-size="14" font-weight="900" fill="#111827">支付牌照也能做收单</text>
+    <text x="986" y="356" font-size="14" fill="#111827">适用场景：</text>
+    <text x="986" y="386" font-size="13" fill="#111827">• 跨境收单（如面向境外商户）</text>
+    <text x="986" y="418" font-size="13" fill="#111827">• 与持牌机构合作，由其完成</text>
+    <text x="998" y="444" font-size="13" fill="#111827">资金清算（如通过合作银行）</text>
+    <rect x="966" y="488" width="188" height="216" rx="8" fill="#fffdf8" stroke="#efc778"/>
+    <circle cx="992" cy="525" r="12" fill="#f59e0b"/><text x="992" y="530" text-anchor="middle" font-size="17" font-weight="900" fill="#fff">!</text>
+    <text x="1022" y="533" font-size="18" font-weight="900" fill="#d97706">需要支付牌照</text>
+    <text x="1046" y="564" text-anchor="middle" font-size="15" font-weight="900" fill="#111827">（视当地监管要求而定）</text>
+    <text x="986" y="610" font-size="14" fill="#111827">适用场景：</text>
+    <text x="986" y="640" font-size="13" fill="#111827">• 在某些国家/地区开展</text>
+    <text x="998" y="666" font-size="13" fill="#111827">本地收单业务</text>
+    <text x="986" y="696" font-size="13" fill="#111827">• 直接参与资金清算、结算</text>
+  </g>
+
+  <rect x="22" y="895" width="1134" height="72" rx="12" fill="#eef2f7" stroke="#e2e8f0"/>
+  <circle cx="50" cy="922" r="9" fill="#cbd5e1"/><rect x="46" y="931" width="8" height="13" rx="3" fill="#cbd5e1"/>
+  <text x="70" y="923" font-size="16" font-weight="900" fill="#475569">一图理解：</text>
+  <text x="70" y="948" font-size="15" fill="#475569">PCI 是“技术与安全准入证”，决定你能否接入卡组网络；支付牌照是“业务合规经营许可”，决定你能否在某个国家/地区合法开展资金相关业务。</text>
+
+  <rect x="22" y="760" width="1134" height="112" rx="10" fill="#ffffff" stroke="#d8e2ee"/>
+  <text x="590" y="788" text-anchor="middle" font-size="17" font-weight="900" fill="#111827">关键结论</text>
+  <g>
+    <rect x="36" y="805" width="345" height="52" rx="8" fill="#f8fbff" stroke="#cbd8e8"/>
+    <circle cx="76" cy="831" r="17" fill="#1266c3"/><path d="M66 830 l8 9 l15-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <text x="116" y="825" font-size="16" font-weight="900" fill="#1266c3">PCI 是底线</text>
+    <text x="116" y="849" font-size="13" fill="#111827">接触持卡人数据，就必须满足 PCI DSS。</text>
+    <rect x="400" y="805" width="345" height="52" rx="8" fill="#fbfffb" stroke="#c8dfca"/>
+    <path d="M432 827 l26-15 l26 15 v5 h-52 z" fill="#53b96a"/><rect x="440" y="832" width="9" height="20" fill="#53b96a"/><rect x="457" y="832" width="9" height="20" fill="#53b96a"/><rect x="474" y="832" width="9" height="20" fill="#53b96a"/>
+    <text x="500" y="825" font-size="16" font-weight="900" fill="#149044">支付牌照不是做收单的必要条件</text>
+    <text x="500" y="849" font-size="13" fill="#111827">是否持牌取决于当地法规和业务模式。</text>
+    <rect x="764" y="805" width="365" height="52" rx="8" fill="#fffaf3" stroke="#efd3a5"/>
+    <circle cx="800" cy="829" r="11" fill="#e58a00"/><circle cx="828" cy="829" r="11" fill="#e58a00"/><circle cx="814" cy="814" r="11" fill="#e58a00"/><path d="M785 852 q29-22 58 0" fill="#e58a00"/>
+    <text x="874" y="825" font-size="16" font-weight="900" fill="#b85f00">信用卡收单 ≠ 卡组监管牌照</text>
+    <text x="874" y="849" font-size="13" fill="#111827">基于卡组规则和 PCI 合规即可。</text>
+  </g>
+</svg>
+</div>
+</div>
 <div class="slide" id="s2" style="display:none">
 <div class="slide-head"><span class="sh-num">03</span><span class="sh-title">认证等级与验证方式</span></div>
 <div class="slide-body">
@@ -385,6 +605,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
       <span class="si amber-si" style="bottom:10%;right:5%">CI/CD</span>
       <span class="si red-si" style="top:5%;left:30%">错误日志打 PAN</span>
       <span class="si red-si" style="top:5%;right:25%">APM 采请求体</span>
+      <span class="si red-si" style="top:50%;left:0">客服截图含卡号</span>
       <span class="si red-si" style="bottom:5%;left:30%">测试环境真实卡</span>
       <span class="si red-si" style="bottom:5%;right:25%">BI 同步未脱敏</span>
     </div>
@@ -454,6 +675,212 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 </div>
 </div>
 </div>
+<div class="slide" id="s4b" style="display:none">
+<div class="slide-head"><span class="sh-num">05B</span><span class="sh-title">Passkey + Click to Pay 现代支付架构</span></div>
+<div class="slide-body">
+<svg class="theme-svg" viewBox="0 0 1180 1060" width="100%" role="img" aria-label="Passkey + Click to Pay 现代支付架构图" style="display:block;background:#f8fafc;border-radius:14px">
+  <style>
+    .pay-title{font-size:32px;font-weight:900}
+    .pay-subtitle{font-size:20px;font-weight:800}
+    .pay-tab{font-size:16px;font-weight:900}
+    .pay-h{font-size:16px;font-weight:900}
+    .pay-label{font-size:13px;font-weight:900}
+    .pay-body{font-size:11px}
+    .pay-small{font-size:10px}
+    .pay-value{font-size:14px;font-weight:900}
+  </style>
+  <defs>
+    <filter id="paySoftShadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#64748b" flood-opacity=".14"/>
+    </filter>
+    <linearGradient id="payBlueHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#075ad6"/>
+      <stop offset="1" stop-color="#0043a8"/>
+    </linearGradient>
+    <linearGradient id="payPurpleHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#6d28d9"/>
+    </linearGradient>
+    <marker id="payArrowBlue" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#0b63d8"/>
+    </marker>
+    <marker id="payArrowGreen" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#18a957"/>
+    </marker>
+    <marker id="payArrowPurple" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#6d5bd0"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="900" fill="#f8fafc"/>
+  <text x="590" y="56" text-anchor="middle" class="pay-title" fill="#101827">Passkey + Click to Pay 现代支付架构图</text>
+  <text x="590" y="108" text-anchor="middle" class="pay-subtitle" fill="#64748b">无密码登录 · 一键支付 · 安全便捷 · PCI范围最小化</text>
+
+  <g filter="url(#paySoftShadow)">
+    <rect x="26" y="146" width="214" height="38" rx="6" fill="url(#payBlueHead)"/>
+    <text x="133" y="172" text-anchor="middle" font-size="16" font-weight="900" fill="#fff">1. 用户层（用户设备）</text>
+    <rect x="26" y="184" width="392" height="500" rx="10" fill="#ffffff" stroke="#d9e5f3"/>
+  </g>
+  <rect x="60" y="210" width="206" height="402" rx="34" fill="#101827"/>
+  <rect x="70" y="222" width="186" height="378" rx="28" fill="#ffffff"/>
+  <rect x="126" y="222" width="76" height="16" rx="8" fill="#101827"/>
+  <circle cx="163" cy="286" r="15" fill="#0b63d8"/>
+  <circle cx="163" cy="281" r="5" fill="#fff"/><path d="M153 296 q10-12 20 0" fill="#fff"/>
+  <text x="163" y="323" text-anchor="middle" font-size="10" font-weight="900" fill="#111827">欢迎回来</text>
+  <text x="163" y="342" text-anchor="middle" font-size="10" fill="#64748b">user@example.com</text>
+  <rect x="94" y="366" width="140" height="94" rx="8" fill="#f4f8ff" stroke="#cfe0ff"/>
+  <g fill="none" stroke="#0b63d8" stroke-width="2.4">
+    <path d="M120 404 q10-16 26 0"/><path d="M125 405 q7-10 18 0"/>
+    <path d="M134 401 q6-6 12 0"/><path d="M130 412 q-1 14 11 20"/>
+  </g>
+  <text x="166" y="397" font-size="10" font-weight="900" fill="#111827">Passkey</text>
+  <text x="166" y="421" font-size="10" fill="#111827">私钥存储在设备安全区</text>
+  <text x="166" y="439" font-size="10" fill="#111827">生物识别解锁</text>
+  <rect x="94" y="478" width="140" height="88" rx="8" fill="#f2fff8" stroke="#c9ead6"/>
+  <rect x="116" y="502" width="26" height="20" rx="4" fill="#2fb36d"/>
+  <rect x="116" y="507" width="26" height="4" fill="#ffffff" opacity=".75"/>
+  <circle cx="124" cy="517" r="2" fill="#fff"/>
+  <text x="166" y="511" font-size="10" font-weight="900" fill="#111827">Click to Pay</text>
+  <text x="166" y="535" font-size="10" fill="#111827">卡片凭证（Token）</text>
+  <text x="166" y="553" font-size="10" fill="#111827">存储在卡组网络</text>
+
+  <g>
+    <circle cx="326" cy="320" r="11" fill="#0b63d8"/><rect x="320" y="324" width="12" height="15" rx="3" fill="#0b63d8"/>
+    <text x="350" y="317" font-size="10" font-weight="900" fill="#0b63d8">生物识别认证</text>
+    <text x="350" y="338" font-size="10" fill="#334155">Face ID / Touch ID</text>
+    <circle cx="326" cy="475" r="11" fill="#2fb36d"/><path d="M318 474 l8 8 l13-16" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+    <text x="350" y="472" font-size="10" font-weight="900" fill="#16a34a">网络识别</text>
+    <text x="350" y="493" font-size="10" fill="#334155">邮箱 / 手机号</text>
+    <line x1="280" y1="365" x2="430" y2="365" stroke="#0b63d8" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#payArrowBlue)"/>
+    <line x1="280" y1="520" x2="430" y2="520" stroke="#18a957" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#payArrowGreen)"/>
+  </g>
+
+  <g filter="url(#paySoftShadow)">
+    <rect x="432" y="146" width="214" height="38" rx="6" fill="#07366f"/>
+    <text x="539" y="172" text-anchor="middle" font-size="16" font-weight="900" fill="#fff">2. 商户层（商户系统）</text>
+    <rect x="432" y="184" width="505" height="500" rx="10" fill="#ffffff" stroke="#d9e5f3"/>
+  </g>
+  <rect x="454" y="238" width="296" height="154" rx="8" fill="#f9fbff" stroke="#2f6df6"/>
+  <path d="M602 256 l21 8 v21 q-3 18-21 28 q-18-10-21-28 v-21 z" fill="#0b63d8"/>
+  <circle cx="602" cy="274" r="6" fill="#fff"/><path d="M588 296 q14-15 28 0" fill="#fff"/>
+  <text x="602" y="334" text-anchor="middle" font-size="16" font-weight="900" fill="#111827">Passkey 身份验证</text>
+  <text x="602" y="362" text-anchor="middle" font-size="10" fill="#334155">WebAuthn / FIDO2</text>
+  <text x="602" y="386" text-anchor="middle" font-size="10" fill="#334155">验证用户身份，建立安全会话</text>
+  <line x1="602" y1="392" x2="602" y2="444" stroke="#0b63d8" stroke-width="3" marker-end="url(#payArrowBlue)"/>
+  <text x="637" y="426" font-size="10" font-weight="900" fill="#0b63d8">登录成功</text>
+
+  <rect x="454" y="452" width="296" height="154" rx="8" fill="#f8fff9" stroke="#52c478"/>
+  <path d="M594 474 q17 18 0 36" fill="none" stroke="#2fb36d" stroke-width="4" stroke-linecap="round"/>
+  <path d="M582 482 q10 10 0 20" fill="none" stroke="#2fb36d" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="612" cy="498" r="9" fill="#2fb36d"/>
+  <text x="602" y="548" text-anchor="middle" font-size="16" font-weight="900" fill="#111827">Click to Pay 结账</text>
+  <text x="602" y="576" text-anchor="middle" font-size="10" fill="#334155">商户前端集成 Click to Pay SDK</text>
+  <text x="602" y="598" text-anchor="middle" font-size="10" fill="#334155">发起支付请求（不接触卡数据）</text>
+  <line x1="602" y1="606" x2="602" y2="706" stroke="#18a957" stroke-width="3" marker-end="url(#payArrowGreen)"/>
+
+  <rect x="770" y="330" width="164" height="246" rx="10" fill="#f3f7fb" stroke="#d6e0eb"/>
+  <rect x="838" y="358" width="38" height="12" rx="3" fill="#334155"/><circle cx="867" cy="364" r="1.6" fill="#fff"/>
+  <rect x="838" y="378" width="38" height="12" rx="3" fill="#334155"/><circle cx="867" cy="384" r="1.6" fill="#fff"/>
+  <text x="852" y="426" text-anchor="middle" font-size="10" font-weight="900" fill="#111827">商户服务器</text>
+  <g fill="#16a34a">
+    <circle cx="792" cy="462" r="7"/><circle cx="792" cy="488" r="7"/><circle cx="792" cy="514" r="7"/><circle cx="792" cy="540" r="7"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+    <path d="M788 462 l3 3 l6-7"/><path d="M788 488 l3 3 l6-7"/><path d="M788 514 l3 3 l6-7"/><path d="M788 540 l3 3 l6-7"/>
+  </g>
+  <text x="812" y="467" font-size="10" font-weight="800" fill="#111827">不存储密码</text>
+  <text x="812" y="493" font-size="10" font-weight="800" fill="#111827">不存储卡号</text>
+  <text x="812" y="519" font-size="10" font-weight="800" fill="#111827">不处理卡数据</text>
+  <text x="812" y="545" font-size="10" font-weight="800" fill="#111827">PCI范围缩小</text>
+  <path d="M750 534 H770" stroke="#9aaabd" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#payArrowPurple)"/>
+
+  <g filter="url(#paySoftShadow)">
+    <rect x="26" y="700" width="214" height="38" rx="6" fill="url(#payPurpleHead)"/>
+    <text x="133" y="726" text-anchor="middle" font-size="16" font-weight="900" fill="#fff">3. 支付处理层</text>
+    <rect x="26" y="738" width="926" height="168" rx="10" fill="#ffffff" stroke="#d9e5f3"/>
+  </g>
+  <g>
+    <rect x="48" y="774" width="198" height="124" rx="8" fill="#fafaff" stroke="#d9d6f3"/>
+    <path d="M135 790 q16 15 0 30" fill="none" stroke="#6d5bd0" stroke-width="4"/><path d="M123 798 q9 9 0 18" fill="none" stroke="#6d5bd0" stroke-width="4"/>
+    <text x="147" y="850" text-anchor="middle" font-size="10" font-weight="900" fill="#111827">Click to Pay</text>
+    <text x="147" y="874" text-anchor="middle" font-size="10" fill="#334155">网络令牌服务（SRC）</text>
+    <text x="147" y="894" text-anchor="middle" font-size="10" fill="#334155">卡Token存储与管理</text>
+
+    <rect x="286" y="774" width="218" height="124" rx="8" fill="#fafaff" stroke="#d9d6f3"/>
+    <circle cx="354" cy="803" r="13" fill="#e91b23"/><circle cx="373" cy="803" r="13" fill="#f59e0b"/>
+    <text x="430" y="812" text-anchor="middle" font-size="16" font-weight="900" fill="#123f9f">VISA</text>
+    <text x="395" y="850" text-anchor="middle" font-size="10" font-weight="900" fill="#111827">卡组织网络</text>
+    <text x="395" y="874" text-anchor="middle" font-size="10" fill="#334155">Token 路由与处理</text>
+
+    <rect x="546" y="774" width="154" height="124" rx="8" fill="#fafaff" stroke="#d9d6f3"/>
+    <path d="M623 790 l26 16 h-52 z" fill="#6d5bd0"/><rect x="603" y="809" width="8" height="22" fill="#6d5bd0"/><rect x="619" y="809" width="8" height="22" fill="#6d5bd0"/><rect x="635" y="809" width="8" height="22" fill="#6d5bd0"/>
+    <text x="623" y="850" text-anchor="middle" font-size="10" font-weight="900" fill="#111827">发卡行</text>
+    <text x="623" y="874" text-anchor="middle" font-size="10" fill="#334155">授权与风控</text>
+
+    <rect x="738" y="774" width="154" height="124" rx="8" fill="#fafaff" stroke="#d9d6f3"/>
+    <circle cx="815" cy="807" r="17" fill="#22c55e"/><path d="M806 806 l7 8 l13-17" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <text x="815" y="850" text-anchor="middle" font-size="10" font-weight="900" fill="#111827">授权成功</text>
+    <text x="815" y="874" text-anchor="middle" font-size="10" fill="#334155">完成扣款授权</text>
+
+    <g stroke="#6d5bd0" stroke-width="2.5" marker-end="url(#payArrowPurple)">
+      <line x1="246" y1="826" x2="286" y2="826"/><line x1="504" y1="826" x2="546" y2="826"/><line x1="700" y1="826" x2="738" y2="826"/>
+    </g>
+    <path d="M892 826 H928 V576" fill="none" stroke="#6d5bd0" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#payArrowPurple)"/>
+  </g>
+
+  <g filter="url(#paySoftShadow)">
+    <rect x="952" y="166" width="202" height="500" rx="10" fill="#ffffff" stroke="#d9e5f3"/>
+    <text x="1053" y="210" text-anchor="middle" font-size="16" font-weight="900" fill="#101827">为什么更安全？</text>
+    <path d="M1008 258 l19 7 v20 q-3 16-19 25 q-16-9-19-25 v-20 z" fill="#0b63d8"/>
+    <text x="1056" y="270" font-size="10" font-weight="900" fill="#111827">抗钓鱼</text>
+    <text x="1056" y="294" font-size="10" fill="#334155">Passkey 绑定域名</text>
+    <text x="1056" y="314" font-size="10" fill="#334155">无法被钓鱼站窃取</text>
+    <rect x="992" y="366" width="34" height="22" rx="4" fill="#0b63d8"/><rect x="992" y="372" width="34" height="4" fill="#fff" opacity=".75"/>
+    <text x="1056" y="374" font-size="10" font-weight="900" fill="#111827">卡号不触商户</text>
+    <text x="1056" y="398" font-size="10" fill="#334155">使用网络级 Token</text>
+    <text x="1056" y="418" font-size="10" fill="#334155">卡号不进商户系统</text>
+    <circle cx="1009" cy="484" r="16" fill="#0b63d8"/><text x="1009" y="489" text-anchor="middle" font-size="9" font-weight="900" fill="#fff">PCI</text>
+    <text x="1056" y="480" font-size="10" font-weight="900" fill="#111827">PCI范围最小化</text>
+    <text x="1056" y="504" font-size="10" fill="#334155">商户不处理、</text>
+    <text x="1056" y="524" font-size="10" fill="#334155">不存储卡数据</text>
+    <path d="M1010 572 l20 8 v20 q-3 16-20 26 q-17-10-20-26 v-20 z" fill="#0b63d8"/>
+    <path d="M1001 596 l7 7 l14-18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <text x="1056" y="582" font-size="10" font-weight="900" fill="#111827">低风险高转化</text>
+    <text x="1056" y="606" font-size="10" fill="#334155">登录更快，支付更顺</text>
+  </g>
+
+  <rect x="14" y="930" width="1152" height="78" rx="8" fill="#eef6ff" stroke="#c9def6"/>
+  <text x="590" y="918" text-anchor="middle" font-size="16" font-weight="900" fill="#0b63d8">整体价值</text>
+  <g>
+    <path d="M118 956 l16 6 v16 q-3 12-16 20 q-13-8-16-20 v-16 z" fill="#0b63d8"/>
+    <path d="M110 975 l6 6 l12-14" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="160" y="964" font-size="10" font-weight="900" fill="#111827">安全性提升</text>
+    <text x="160" y="988" font-size="10" fill="#334155">抗钓鱼、抗盗刷</text>
+    <path d="M394 990 h8 v-18 h-8z M410 990 h8 v-27 h-8z M426 990 h8 v-36 h-8z" fill="#22c55e"/>
+    <path d="M394 960 l18-14 l12 11 l25-29" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="474" y="964" font-size="10" font-weight="900" fill="#111827">转化率提升</text>
+    <text x="474" y="988" font-size="10" fill="#334155">登录快、支付快</text>
+    <path d="M675 956 l16 6 v16 q-3 12-16 20 q-13-8-16-20 v-16 z" fill="#6d5bd0"/>
+    <path d="M667 975 l6 6 l12-14" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="720" y="964" font-size="10" font-weight="900" fill="#111827">合规成本降低</text>
+    <text x="720" y="988" font-size="10" fill="#334155">PCI范围最小化</text>
+    <circle cx="955" cy="960" r="10" fill="#f59e0b"/><path d="M936 991 q19-19 38 0" fill="#f59e0b"/>
+    <text x="1004" y="964" font-size="10" font-weight="900" fill="#111827">用户体验更好</text>
+    <text x="1004" y="988" font-size="10" fill="#334155">无密码、一键支付</text>
+  </g>
+
+  <g font-size="10" font-weight="800">
+    <line x1="48" y1="1035" x2="86" y2="1035" stroke="#0b63d8" stroke-width="2.5" marker-end="url(#payArrowBlue)"/>
+    <text x="96" y="1039" fill="#111827">登录流程（Passkey）</text>
+    <line x1="260" y1="1035" x2="298" y2="1035" stroke="#18a957" stroke-width="2.5" marker-end="url(#payArrowGreen)"/>
+    <text x="308" y="1039" fill="#111827">支付流程（Click to Pay）</text>
+    <line x1="520" y1="1035" x2="558" y2="1035" stroke="#6d5bd0" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#payArrowPurple)"/>
+    <text x="568" y="1039" fill="#111827">数据 / 状态流</text>
+    <text x="742" y="1039" fill="#64748b">注：基于 EMVCo Click to Pay 与 FIDO2 / WebAuthn 标准</text>
+  </g>
+</svg>
+</div>
+</div>
 <div class="slide" id="s5" style="display:none">
 <div class="slide-head"><span class="sh-num">06</span><span class="sh-title">CIT / MIT 与业务场景</span></div>
 <div class="slide-body">
@@ -497,7 +924,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
     <div class="tt-header"><div class="tt-cell" style="flex:1.2">Token 类型</div><div class="tt-cell">跨 PSP</div><div class="tt-cell">可逆</div><div class="tt-cell" style="flex:1.5">关键特性</div><div class="tt-cell">适用</div></div>
     <div class="tt-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot red-dot"></span><b>PSP Token</b><br><small>PSP 发的 token</small></div><div class="tt-cell">❌</div><div class="tt-cell">PSP 可逆</div><div class="tt-cell" style="flex:1.5">换 PSP 即失效</div><div class="tt-cell">单 PSP</div></div>
     <div class="tt-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot amber-dot"></span><b>Merchant Token</b><br><small>自建 Vault 发</small></div><div class="tt-cell">✅</div><div class="tt-cell">经 Vault 可逆</div><div class="tt-cell" style="flex:1.5">跨 PSP 路由</div><div class="tt-cell">多 PSP 编排</div></div>
-    <div class="tt-row highlight-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot green-dot"></span><b>Network Token</b><br><small>卡组织发 ⭐</small></div><div class="tt-cell">✅✅</div><div class="tt-cell">不可逆</div><div class="tt-cell" style="flex:1.5"><b class="green-text">授权率 +2~5%</b><br>卡过期自动更新</div><div class="tt-cell"><b class="green-text">订阅/复购</b></div></div>
+    <div class="tt-row highlight-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot green-dot"></span><b>Network Token</b><br><small>卡组织发 ⭐</small></div><div class="tt-cell">✅<br><small>依赖支持</small></div><div class="tt-cell">不可逆</div><div class="tt-cell" style="flex:1.5"><b class="green-text">授权率 +2~5%</b><br>卡过期自动更新</div><div class="tt-cell"><b class="green-text">订阅/复购</b></div></div>
     <div class="tt-row"><div class="tt-cell" style="flex:1.2"><span class="tt-dot indigo-dot"></span><b>Payment Method ID</b><br><small>用户级绑定</small></div><div class="tt-cell">❌</div><div class="tt-cell">不可逆</div><div class="tt-cell" style="flex:1.5">绑定用户级</div><div class="tt-cell">用户钱包</div></div>
   </div>
 </div>
@@ -522,6 +949,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
     <div class="card-line" style="font-weight:700;color:#d97706">成本中等</div>
     <div class="card-line">跨 PSP：✅</div>
     <div class="card-line">Spreedly / VGS / Basis Theory</div>
+    <div class="card-warn">⚠ 选前看 AOC / PCI 状态</div>
     <div class="card-ok">✅ 多 PSP，不自建</div>
   </div>
   <div class="card card-red" style="flex:1">
@@ -646,6 +1074,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
   <div class="col-item"><b>客服：</b>只展示后四位 + 卡品牌，全量审计，权限拆分</div>
   <div class="col-item"><b>BI：</b>PAN → token/hash，CVV 不进，BIN 可进</div>
   <div class="col-item"><b>AI 风控：</b>用 BIN/token/PSP 风控分/合成数据</div>
+  <div class="col-item"><b>v4.0：</b>数据发现分类、留存处置策略、权限定期复核</div>
 </div>
 </div>
 </div>
@@ -666,6 +1095,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
     <div class="pl-stage green-pl"><div class="pl-icon">🚀</div><div class="pl-name">部署</div><div class="pl-desc">渗透测试<br>完整性检测</div></div>
   </div>
   <div class="env-box">三环境隔离：Dev · Staging · Prod</div>
+  <div class="callout-box blue-callout">v4.0 补充：安全测试结果跟踪修复 · 支付开发专项安全培训</div>
 </div>
 <div class="col-box">
   <div class="col-header red">🚫 红线 · 重大不符合风险</div>
@@ -747,7 +1177,6 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 <button class="arr ar" id="ar" onclick="go(1)">›</button>
 </div>
 <div class="np" id="np"><div class="ni">
-<h3>演讲词</h3>
 <div class="nt" id="nt"></div>
 <div class="nm" id="nm"></div>
 <div class="nd" id="nd"></div>
@@ -755,10 +1184,16 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI','Microso
 </div>
 <div class="mo" id="mo"><div style="text-align:center">
 <div class="mt" id="mot"></div><div class="mh" id="moh"></div></div></div>
-<div class="kh">← → 翻页 · N 演讲词 · F 全屏</div>
+<div class="kh">← → 翻页 · N 备注 · T 亮/暗 · F 全屏</div>
 <script>
 var NOTES=[{"t": "01 · 目录 · 四大模块", "m": "1 分钟", "d": "今天把 PCI DSS 翻译成产品、架构、运营能听懂的语言。\n\n四模块走完回答三件事：\n1. 公司在 Scope 里吗？\n2. 选型压最小 PCI 成本了吗？\n3. 出事怎么兜底？\n\n逻辑链：合规判断→产品落地→技术架构→运营审计。走完这四步，PCI 就不是年底突击，是日常节奏。"}, {"t": "02 · 定位与边界", "m": "3 分钟", "d": "PCI 的核心判断是：**哪些系统存储、处理、传输卡数据，或能影响 CDE 安全**。\n\n你公司有 200 个微服务，可能只有少数直接处理卡数据；但日志、CI/CD、跳板机这类能影响 CDE 的系统也要纳入评估。\n\n**PCI 本质是架构决策**，不是安全团队的活。Hosted Page 还是 Direct API，产品定下来那一刻，未来三年的合规成本就定了。\n\nv4.0 的变化——以前 Q4 突击三个月能过，现在要求持续监控、持续评估。年度 snapshot 时代结束了。"}, {"t": "03 · 认证等级与验证方式", "m": "4 分钟", "d": "SAQ 类型由**产品形态决定**，不是安全团队选的。\n\n商户等级按年交易量划分：\n- Level 1：>600 万笔，必须 ROC + QSA\n- Level 2：100~600 万笔\n- Level 3：20~100 万笔\n- Level 4：<20 万笔，填 SAQ 即可\n\n四种 SAQ 对应四种接入：\n- Hosted Page → SAQ A\n- iframe / Elements → SAQ A-EP（甜点区）\n- 自有支付系统 → SAQ C\n- Direct API → SAQ D（300+ 问题）\n\n让商户从 D 降到 A-EP，合规工作量少 80%。"}, {"t": "04 · PCI Scope", "m": "4 分钟", "d": "同心圆：CDE 核心 → Scope 边界 → 风险盲区。\n\n盲区才是地雷：\n- ELK 一条日志打 PAN → 整个集群进 CDE\n- APM 采了请求体 → APM 进 CDE\n- 客服截图含卡号 → 客服系统进 CDE\n- 测试环境用真实卡号 → 重大不符合风险\n- BI 同步未脱敏数据 → 数仓进 CDE\n\n降 Scope 七件套：能不碰就不碰，碰了就脱敏，脱敏不了就隔离，隔离不了就加密。\n\n铁律：**授权后 CVV 永远不存**。"}, {"t": "05 · 支付产品形态", "m": "4 分钟", "d": "产品决策指南：\n\n**Hosted Payment Page**：SAQ A，Scope 最小，跳转伤转化率。\n\n**Embedded / Elements**：SAQ A-EP，甜点区——体验好，合规也轻。大多数商户的最佳选择。\n\n**Direct API**：SAQ D，300+ 问题，合规成本最高。除非有强理由，否则别碰。\n\n**PayFac 模式**：平台做 Master Merchant，但平台要扛 PCI Level 1。\n\n**Click to Pay / Passkey**：卡数据主要留在卡组织或用户设备侧，商户侧卡数据暴露面极低。未来方向。"}, {"t": "06 · CIT / MIT", "m": "3 分钟", "d": "CIT（买家在场）：首笔支付、注册绑卡。通常需 3DS/SCA 或满足豁免，并建立后续 MIT 的授权凭证。\nMIT（商户发起）：订阅续费、分期扣款、免密扣款。必须带首次 CIT 的凭证。\n\n判断标准：**首次 CIT 完成强认证或合规豁免，后续 MIT 带凭证**。\n\n订阅生命周期：CIT + 认证/豁免 → 存 Token → MIT 续费 → 扣款失败重试 → 卡过期用 Network Token 自动更新。\n\nNetwork Token 能解 involuntary churn。"}, {"t": "07 · Tokenization", "m": "4 分钟", "d": "四种 Token：\n\n**PSP Token**：锁定单 PSP，换 PSP 即失效。\n\n**Merchant Token**：自建 Vault，跨 PSP，合规成本高。\n\n**Network Token**（重点）：卡组织发，通常更利于生命周期管理和跨 PSP 策略，泄露后的可用性显著降低。**业务增长引擎**：授权率常见 +2~5%，卡过期自动更新。\n\n**Payment Method ID**：用户级绑定，适合钱包。\n\n核心洞察：Network Token 是业务增长引擎，不只是安全工具。"}, {"t": "08 · Card Vault 选型", "m": "4 分钟", "d": "三种方案：\n\n**PSP Vault**：成本最低，锁定单 PSP。单 PSP 就用这个。\n\n**第三方 Vault**：Spreedly / VGS / Basis Theory，成本中等，跨 PSP。选之前看对方 AOC。\n\n**自建 Vault**：成本最高，HSM / KMS / 双人控制，控制权最强。\n\n独立 Vault 核心价值——**编排**：\n- 成本路由（BIN 级别智能分发）\n- 授权率路由（卡类型级别优化）\n- 容灾切换（秒级故障转移）\n- 卡类型路由（Visa → PSP A，UnionPay → PSP B）"}, {"t": "09 · 密钥管理", "m": "4 分钟", "d": "常见翻车：\n- 密钥硬编码进代码\n- 密钥和密文同库\n- 生产密钥拷到测试环境\n- 邮件 / IM 发送密钥\n\n任一条被 QSA 看到 → 重大不符合风险。\n\n信封加密模型：Master Key（HSM，永不出设备）→ KEK（KMS）→ DEK（加密 PAN）→ PAN 明文。\n\n即使拖库，攻击者拿到的也是密文 + 被 KEK 包过的 DEK，没 KEK 解不开。\n\nv4.0 要求定期轮换，并淘汰早期 TLS、RSA-1024、3DES 和不合规使用 SHA-1 的场景。"}, {"t": "10 · 前端支付页安全", "m": "4 分钟", "d": "Magecart 直接在浏览器里偷。\n\n英航案例：2018 年，22 行恶意代码，CDN 被篡改，22 天未发现，约 38 万交易受影响；ICO 拟罚 1.83 亿英镑，最终罚款 2000 万英镑。\n\n风险来源：广告脚本、埋点 SDK、客服浮窗、A/B 测试工具、CDN、第三方 npm 包。\n\n防御（v4.0 6.4.3 / 11.6.1）：\n- **CSP**：限制脚本来源\n- **SRI**：脚本完整性校验\n- **脚本白名单**\n- **支付页篡改检测**：脚本或页面变了立即通知"}, {"t": "11 · 数据治理", "m": "4 分钟", "d": "核心问题：**卡数据除了 CDE 里那份，其他副本在哪？**\n\n五个方向：ELK / 日志、APM / Trace、客服后台、BI / 数仓、测试环境。\n\n治理规则：\n- 日志：全链路不记录 PAN / CVV\n- 客服：只展示后四位 + 卡品牌\n- BI：PAN → token / hash，CVV 不进\n- AI 风控：BIN 代 PAN、合成数据训练\n\nv4.0 把建议变成要求。"}, {"t": "12 · 研发与测试", "m": "3 分钟", "d": "安全开发生命周期：编码 → SAST → 构建 → DAST → 部署。\n\n三环境隔离：Dev、Staging、Prod。\n\n两条红线（重大不符合风险）：\n\n**测试环境用真实卡号** → 原则上禁止，除非按 CDE 等级纳管。\n\n**密钥进 Git 仓库** → 进了就泄露，必须立即轮换。用 Secrets Manager + git-secrets。"}, {"t": "13 · 事件响应", "m": "4 分钟", "d": "四个严重等级：\n\n**PAN 泄露**：按 PSP / 收单行 / 卡组织规则通知，内部按 24h 目标演练。\n\n**CVV 被记录**：比 PAN 泄露更严重。立即删、全面排查。\n\n**密钥泄露**：等同 PAN 泄露。立即轮换、重加密。\n\n**JS 篡改**：下线 → 取证 → 清理 → 加强 CSP/SRI → 重新上线。\n\n时间线：T+0 启动 → T+4 取证 → T+24 完成必要通知 → T+72 报告 → T+30 复盘。"}, {"t": "14 · 收尾", "m": "2 分钟", "d": "PCI 转业务收益：\n- **Network Token** 提授权率 2~5%\n- **卡过期自动更新**降 churn\n- **Token 编排**撑多 PSP 容灾\n- **PayFac + Click to Pay** 撑规模化和体验优化\n\n四模块逻辑链：合规判断 → 产品落地 → 技术架构 → 运营审计。\n\n走完这四步，PCI 就不是年底突击，是日常节奏。谢谢大家。"}];
 var MMAP={"模块一": ["MODULE 1", "合规判断"], "模块二": ["MODULE 2", "产品落地"], "模块三": ["MODULE 3", "技术架构"], "模块四": ["MODULE 4", "运营审计"]};
+NOTES.splice(2,0,{t:"02B · 支付牌照与 PCI DSS 定位",m:"2 分钟",d:"这页把支付牌照和 PCI DSS 拆成两条线：支付牌照解决监管准入和资金流问题，PCI DSS 解决卡数据安全和卡组织合规问题。\n\n信用卡收单不是天然要求商户或技术服务方自持支付牌照；但只要存储、处理、传输卡数据，或影响 CDE，就必须按 PCI DSS 做安全控制。\n\n中间链路展示商户、收单机构、收单处理方、卡组网络、发卡机构的关系。关键结论：牌照不是收单的必要条件，PCI 合规才是接触卡数据后的硬性要求。"});
+NOTES.splice(6,0,{t:"05B · Passkey + Click to Pay 现代支付架构",m:"3 分钟",d:"这页对应未来支付体验的落地架构：左边是用户设备，用户通过 Passkey 做无密码身份验证，同时在设备或钱包入口选择 Click to Pay。\n\n中间是商户系统：上半部分用 WebAuthn / FIDO2 验证用户身份并建立安全会话；下半部分通过 Click to Pay SDK 发起支付请求，商户前端不接触卡号。右侧商户服务器只保存必要状态，不存密码、不存卡号、不处理卡数据，所以 PCI Scope 明显收缩。\n\n底部是支付处理层：Click to Pay 网络令牌服务、卡组织网络、发卡行完成 Token 路由、风控和授权。核心价值是安全性提升、转化率提升、合规成本降低、用户体验更好。"});
+NOTES[8].d += "\n\n补充：实际跨 PSP 能力取决于卡组织、token requestor 和 PSP 支持。";
+NOTES[12].d += "\n\nv4.0 还要求数据发现分类、留存处置策略、权限定期复核。";
+NOTES[13].d += "\n\nv4.0 还要求安全测试结果跟踪修复，支付开发要有专项安全培训。";
+NOTES[15].t = "14 · 培训主线 · 收尾";
 var cur=0,no=false,ot=null;
 var ss=document.querySelectorAll(".slide"),tot=ss.length;
 function render(){
@@ -773,6 +1208,7 @@ function render(){
   document.getElementById("bn").disabled=(cur===tot-1);
   document.getElementById("al").disabled=(cur===0);
   document.getElementById("ar").disabled=(cur===tot-1);
+  if(typeof zoomLevel==="number")applyZoom();
   var m=ss[cur].getAttribute("data-mod");
   if(m&&MMAP[m])showMod(MMAP[m][0],MMAP[m][1]);
 }
@@ -784,11 +1220,22 @@ function showMod(t,s){
 }
 function go(d){var n=cur+d;if(n>=0&&n<tot){cur=n;render();}}
 function tn(){no=!no;document.getElementById("np").classList.toggle("open",no);document.getElementById("bno").classList.toggle("on",no);}
+function setTheme(v){
+  var light=v==="light";
+  document.body.classList.toggle("light",light);
+  document.getElementById("bth").textContent=light?"☾":"☀";
+  document.getElementById("bth").classList.toggle("on",light);
+  try{localStorage.setItem("pciTheme",light?"light":"dark");}catch(e){}
+}
+function theme(){
+  setTheme(document.body.classList.contains("light")?"dark":"light");
+}
 function fs(){if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(function(){});else document.exitFullscreen();}
 document.addEventListener("keydown",function(e){
   if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();go(-1);}
   else if(e.key==="ArrowRight"||e.key==="ArrowDown"||e.key===" "){e.preventDefault();go(1);}
   else if(e.key==="n"||e.key==="N")tn();
+  else if(e.key==="t"||e.key==="T")theme();
   else if(e.key==="f"||e.key==="F")fs();
   else if(e.key==="Escape")document.getElementById("mo").classList.remove("show");
 });
@@ -797,16 +1244,28 @@ document.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;});
 document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?1:-1);});
 document.getElementById("mo").addEventListener("click",function(){this.classList.remove("show");});
 var zoomLevel=1;
+function applyZoom(){
+  var sw=document.querySelector(".sw");
+  var sa=document.querySelector(".sa");
+  sw.style.transform="scale("+zoomLevel+")";
+  var visualHeight=sw.offsetHeight*zoomLevel;
+  var free=Math.max(0,sa.clientHeight-visualHeight-32);
+  sw.style.marginTop=Math.min(18,Math.floor(free/2))+"px";
+  sw.style.marginBottom=Math.max(0,Math.ceil(sw.offsetHeight*(zoomLevel-1)+Math.min(18,Math.floor(free/2))+20))+"px";
+  document.getElementById("zpct").textContent=Math.round(zoomLevel*100)+"%";
+}
 function zoom(d){
   zoomLevel=Math.min(2,Math.max(0.5,zoomLevel+d*0.1));
-  document.querySelector(".sw").style.transform="scale("+zoomLevel+")";
-  document.getElementById("zpct").textContent=Math.round(zoomLevel*100)+"%";
+  applyZoom();
 }
 document.addEventListener("keydown",function(e){
   if(e.key==="+"||e.key==="="){e.preventDefault();zoom(1);}
   else if(e.key==="-"||e.key==="_"){e.preventDefault();zoom(-1);}
-  else if(e.key==="0"){e.preventDefault();zoomLevel=1;document.querySelector(".sw").style.transform="scale(1)";document.getElementById("zpct").textContent="100%";}
+  else if(e.key==="0"){e.preventDefault();zoomLevel=1;applyZoom();}
 });
+window.addEventListener("resize",function(){applyZoom();});
+try{setTheme(localStorage.getItem("pciTheme")==="light"?"light":"dark");}catch(e){setTheme("dark");}
 render();
 </script>
 </body></html>
+
